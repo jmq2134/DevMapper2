@@ -30,16 +30,16 @@ $(document).ready(function() {
         }
 
         // A function for creating a new tenant
-        function newFipSite(fipData) {
-            console.log(fipData);
-            $.post("/api/newFipSite", fipData, function(){
+        function newCleSite(cleData) {
+            console.log(cleData);
+            $.post("/api/newCleSite", cleData, function(){
                 console.log('request ended')
             })
-            console.log("adding new site to fipDev database");
+            console.log("adding new site to cleDev database");
         }
 
-        // Calling the newFipSite function and passing in the values in the new tenant input
-        newFipSite({
+        // Calling the newCleSite function and passing in the values in the new tenant input
+        newCleSite({
             siteName: siteName
                 .val()
                 .trim(),

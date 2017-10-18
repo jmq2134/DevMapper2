@@ -103,7 +103,6 @@ module.exports = function(app) {
 
     // ------------------------------------------- POST ROUTES ------------------------------------------------- //
 
-
     /// ================ ADD FIP DEV SITE ==================== ///
 
     app.post("/api/newFipSite", function(req, res) {
@@ -129,7 +128,7 @@ module.exports = function(app) {
         }).then(function(data) {
 
             // REDIRECT TO CENTER PAGE
-            res.redirect("/center/" + req.params.id);
+            res.redirect("/fipDev");
 
             }).catch(function(error) {
 
@@ -137,6 +136,79 @@ module.exports = function(app) {
                 res.send(error);
             });
     }
+
+    /// ================ ADD CLE DEV SITE ==================== ///
+
+    app.post("/api/newCleSite", function(req, res) {
+
+        // LOG INFO FROM REQ.BODY FROM MODAL FORM
+        console.log("------------------------");
+        console.log(req.body);
+        console.log("------------------------");
+
+        db.cleDev.create({
+            siteName: req.body.siteName
+            siteStreet1: req.body.siteStreet1
+            siteStreet2: req.body.siteStreet2
+            siteCity: req.body.siteCity
+            siteState: req.body. siteState
+            siteZip: req.body.siteZip
+            siteAddress: req.body.siteAddress
+            dateEntered: req.body.dateEntered         
+            owner: req.body.owner
+            numUnits: req.body.numUnits
+            salePrice: req.body.salePrice
+            notes: req.body.notes
+        }).then(function(data) {
+
+            // REDIRECT TO CENTER PAGE
+            res.redirect("/cleDev");
+
+            }).catch(function(error) {
+
+            // REPORT ERRORS
+                res.send(error);
+            });
+    }
+
+    app.post("/api/newComp", function(req, res) {
+
+        // LOG INFO FROM REQ.BODY FROM MODAL FORM
+        console.log("------------------------");
+        console.log(req.body);
+        console.log("------------------------");
+
+        db.leaseComps.create({
+            siteName: req.body.siteName
+            siteStreet1: req.body.siteStreet1
+            siteStreet2: req.body.siteStreet2
+            siteCity: req.body.siteCity
+            siteState: req.body. siteState
+            siteZip: req.body.siteZip
+            siteAddress: req.body.siteAddress
+            dateEntered: req.body.dateEntered 
+            dateSold: req.body.dateSold 
+            buildingSF: req.body.buildingSF
+            totalAcreage: req.body.totalAcreage  
+            salePrice: req.body.salePrice
+            dateEntered: req.body.dateEntered  
+            numUnits: req.body.numUnits
+            oneBedRent: req.body.oneBedRent
+            twoBedRent: req.body.twoBedRent
+            threeBedRent: req.body.threeBedRent
+            notes: req.body.notes
+        }).then(function(data) {
+
+            // REDIRECT TO CENTER PAGE
+            res.redirect("/cleDev");
+
+            }).catch(function(error) {
+
+            // REPORT ERRORS
+                res.send(error);
+            });
+    }
+
 
 
     /// =============== ADD OR EDIT TENANTS ================== ///

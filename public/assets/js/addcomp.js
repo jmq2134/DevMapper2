@@ -9,9 +9,14 @@ $(document).ready(function() {
     var siteZip = $("[name=siteZip]");
     var siteAddress = siteStreet1 + ", " + siteStreet2 + ", " + siteCity + ", " + siteState + " " + siteZip;
     var dateEntered = $("[name=dateEntered]");
-    var owner = $("[name=owner]");
-    var numUnits = $("[name=numUnits]");
+    var dateSold = $("[name=dateSold]");
+    var buildingSF = $("[name=buildingSF]");
+    var totalAcreage = $("[name=totalAcreage]");
     var salePrice = $("[name=salePrice]");
+    var numUnits = $("[name=numUnits]");
+    var oneBedRent = $("[name=oneBedRent]");
+    var twoBedRent = $("[name=twoBedRent]");
+    var threeBedRent = $("[name=threeBedRent]");
     var notes = $("[name=notes]");
 
     // Handle new tenant submit
@@ -30,16 +35,16 @@ $(document).ready(function() {
         }
 
         // A function for creating a new tenant
-        function newFipSite(fipData) {
-            console.log(fipData);
-            $.post("/api/newFipSite", fipData, function(){
+        function newComp(compData) {
+            console.log(compData);
+            $.post("/api/newComp", compData, function(){
                 console.log('request ended')
             })
-            console.log("adding new site to fipDev database");
+            console.log("adding new site to leasecomp database");
         }
 
-        // Calling the newFipSite function and passing in the values in the new tenant input
-        newFipSite({
+        // Calling the newComp function and passing in the values in the new tenant input
+        newComp({
             siteName: siteName
                 .val()
                 .trim(),
@@ -64,13 +69,31 @@ $(document).ready(function() {
             dateEntered: dateEntered
                 .val()
                 .trim(),
-            owner: owner
+            dateSold: dateSold
+                .val()
+                .trim(),
+            buildingSF: buildingSF
+                .val()
+                .trim(),
+            totalAcreage: totalAcreage
+                .val()
+                .trim(),
+            salePrice: salePrice
                 .val()
                 .trim(),
             numUnits: numUnits
                 .val()
                 .trim(),
             salePrice: salePrice
+                .val()
+                .trim(),
+            oneBedRent: oneBedRent
+                .val()
+                .trim(),
+            twoBedRent: twoBedRent
+                .val()
+                .trim(),
+            threeBedRent: threeBedRent
                 .val()
                 .trim(),
             notes: notes

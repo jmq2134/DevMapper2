@@ -119,6 +119,7 @@
                             <div class="card">
                                 <div class="toolbar">
                                     <div class="col-md-3">
+                                        <button type="button" class="btn btn-fill btn-info" id="button-create" data-toggle='modal' data-target='#modal--create'>Add New Site</button>
                                     </div>
                                 </div>
                                 <table id="bootstrap-table" class="table table-striped">
@@ -182,37 +183,37 @@
                                 <div class="col-lg-6">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
-                                            <form class='modal-form'>
+                                            <form class="create-update-form" action="/api/newFipSite" method="POST">
                                                 <div class="form-group">
                                                     <label for="name_id">Site</label>
-                                                    <input type="text" class="form-control" id="name_id" placeholder="Person name, compnay name">
+                                                    <input type="text" class="form-control" id="name_id" name="siteName" placeholder="Person name, compnay name">
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- Street 1 -->
                                                     <label for="street1_id" class="control-label">Street Address 1</label>
-                                                    <input type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, c/o">
+                                                    <input type="text" class="form-control" id="street1_id" name="siteStreet1" placeholder="Street address, P.O. box, c/o">
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- Street 2 -->
                                                     <label for="street2_id" class="control-label">Street Address 2 (optional) </label>
-                                                    <input type="text" class="form-control" id="street2_id" name="street2" placeholder="Apartment, suite, unit, building, floor, etc.">
+                                                    <input type="text" class="form-control" id="street2_id" name="siteStreet2" placeholder="Apartment, suite, unit, building, floor, etc.">
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- City-->
                                                     <label for="city_id" class="control-label">City</label>
-                                                    <input type="text" class="form-control" id="city_id" name="city" placeholder="Cleveland">
+                                                    <input type="text" class="form-control" id="city_id" name="siteCity" placeholder="Cleveland">
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- State Button -->
                                                     <label for="state_id" class="control-label">State</label>
-                                                    <select class="form-control" id="state_id">
+                                                    <select class="form-control" id="state_id" name="siteState">
                                                         <option value="OH">Ohio</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- Zip Code-->
                                                     <label for="zip_id" class="control-label">Zip Code</label>
-                                                    <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####">
+                                                    <input type="text" class="form-control" id="zip_id" name="siteZip" placeholder="#####">
                                                 </div>
                                             </form>
                                         </div>
@@ -225,23 +226,23 @@
                                             <form class='modal-form'>
                                                 <div class="form-group">
                                                     <label for="dateEntered_id">Date Entered</label>
-                                                    <input type="date" class="form-control" id="dateEntered_id">
+                                                    <input type="date" class="form-control" id="dateEntered_id" name="dateEntered">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="owner_id">Owner</label>
-                                                    <input type="text" class="form-control" id="owner_id">
+                                                    <input type="text" class="form-control" id="owner_id" name="owner">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="numUnits_id"># of Units</label>
-                                                    <input type="number" class="form-control" id="numUnits_id">
+                                                    <input type="number" class="form-control" id="numUnits_id" name="numUnits">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="salePrice_id">Sale Price</label>
-                                                    <input type="number" class="form-control" id="salePrice_id">
+                                                    <input type="number" class="form-control" id="salePrice_id" name="salePrice">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="notes_id">Notes</label>
-                                                    <textarea class = "form-control" rows = "5" id="notes_id"></textarea>
+                                                    <textarea class = "form-control" rows = "5" id="notes_id" name="notes"></textarea>
                                                 </div>
                                             </form>
                                         </div>
@@ -253,7 +254,7 @@
                     <!-- MODAL BUTTONS - SAVE & CLOSE -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="saveCustomerInfo">Save changes</button>
+                        <button class="btn btn-success btn-fill btn-wd " method="GET" action="/" type="submit " id="form--event-add">Save changes</button>
                     </div>
                 </div>
             </div>
