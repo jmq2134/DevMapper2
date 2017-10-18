@@ -8,7 +8,7 @@ module.exports = function(app) {
 
     // --------------------------------------------- GET ROUTES ------------------------------------------------- //
 
-    /// ============= REDIRECT TO LOGIN ============= ///
+    /// ============= REDIRECT TO LOGIN ============== ///
     app.get('/', function(req, res) {
         res.redirect('/signin');
     });
@@ -23,7 +23,7 @@ module.exports = function(app) {
         res.render('signup', req);
     });
 
-    /// ================ RENDER cleDev ================== ///
+    /// ================ RENDER cleDev =============== ///
     app.get("/cleDev", function(req, res) {
         db.cleDev.findAll().then(function(data) {
             var hbsObject = { cleDev: data };
@@ -32,7 +32,7 @@ module.exports = function(app) {
         });
     });
 
-    /// ================ RENDER fipDev ================== ///
+    /// ================ RENDER fipDev =============== ///
     app.get("/fipDev", function(req, res) {
         db.fipDev.findAll().then(function(data) {
             var hbsObject = { fipDev: data };
@@ -41,7 +41,7 @@ module.exports = function(app) {
         });
     });
 
-    /// ================ RENDER leaseComps ================== ///
+    /// ============== RENDER leaseComps ============= ///
     app.get("/leaseComps", function(req, res) {
         db.leaseComps.findAll().then(function(data) {
             var hbsObject = { leaseComps: data };
@@ -50,7 +50,7 @@ module.exports = function(app) {
         });
     });
 
-    /// ================ RENDER CLE MAP ================== ///
+    /// ============== RENDER CLE MAP ================ ///
     app.get("/clemap", function(req, res) {
         db.cleDev.findAll().then(function(data) {
             var hbsObject = { cleDev: data };
@@ -59,7 +59,7 @@ module.exports = function(app) {
         });
     });
 
-    /// ================ RENDER FIP MAP ================== ///
+    /// ============== RENDER FIP MAP ================ ///
     app.get("/fipmap", function(req, res) {
         db.fipDev.findAll().then(function(data) {
             var hbsObject = { fipDev: data };
@@ -68,7 +68,7 @@ module.exports = function(app) {
         });
     });
 
-    /// ================ RENDER LEASE COMPS MAP ================== ///
+    /// ========== RENDER LEASE COMPS MAP ============ ///
     app.get("/compsmap", function(req, res) {
         db.leaseComps.findAll().then(function(data) {
             var hbsObject = { leaseComps: data };
@@ -94,7 +94,7 @@ module.exports = function(app) {
         });
     })
 
-    /// ================= SHOW ALL leaseComps =================== ///
+    /// =============== SHOW ALL leaseComps ================= ///
     app.get("/api/leaseComps", function(req, res) {
         db.leaseComps.findAll({}).then(function(dbleaseComps) {
             res.json(dbleaseComps);
@@ -103,7 +103,7 @@ module.exports = function(app) {
 
     // ------------------------------------------- POST ROUTES ------------------------------------------------- //
 
-    /// ================ ADD FIP DEV SITE ==================== ///
+    /// =============== ADD FIP DEV SITE ==================== ///
 
     app.post("/api/newFipSite", function(req, res) {
 
@@ -113,17 +113,17 @@ module.exports = function(app) {
         console.log("------------------------");
 
         db.fipDev.create({
-            siteName: req.body.siteName
-            siteStreet1: req.body.siteStreet1
-            siteStreet2: req.body.siteStreet2
-            siteCity: req.body.siteCity
-            siteState: req.body. siteState
-            siteZip: req.body.siteZip
-            siteAddress: req.body.siteAddress
-            dateEntered: req.body.dateEntered         
-            owner: req.body.owner
-            numUnits: req.body.numUnits
-            salePrice: req.body.salePrice
+            siteName: req.body.siteName,
+            siteStreet1: req.body.siteStreet1,
+            siteStreet2: req.body.siteStreet2,
+            siteCity: req.body.siteCity,
+            siteState: req.body. siteState,
+            siteZip: req.body.siteZip,
+            siteAddress: req.body.siteAddress,
+            dateEntered: req.body.dateEntered,        
+            owner: req.body.owner,
+            numUnits: req.body.numUnits,
+            salePrice: req.body.salePrice,
             notes: req.body.notes
         }).then(function(data) {
 
@@ -135,7 +135,7 @@ module.exports = function(app) {
             // REPORT ERRORS
                 res.send(error);
             });
-    }
+    });
 
     /// ================ ADD CLE DEV SITE ==================== ///
 
@@ -147,17 +147,17 @@ module.exports = function(app) {
         console.log("------------------------");
 
         db.cleDev.create({
-            siteName: req.body.siteName
-            siteStreet1: req.body.siteStreet1
-            siteStreet2: req.body.siteStreet2
-            siteCity: req.body.siteCity
-            siteState: req.body. siteState
-            siteZip: req.body.siteZip
-            siteAddress: req.body.siteAddress
-            dateEntered: req.body.dateEntered         
-            owner: req.body.owner
-            numUnits: req.body.numUnits
-            salePrice: req.body.salePrice
+            siteName: req.body.siteName,
+            siteStreet1: req.body.siteStreet1,
+            siteStreet2: req.body.siteStreet2,
+            siteCity: req.body.siteCity,
+            siteState: req.body. siteState,
+            siteZip: req.body.siteZip,
+            siteAddress: req.body.siteAddress,
+            dateEntered: req.body.dateEntered,        
+            owner: req.body.owner,
+            numUnits: req.body.numUnits,
+            salePrice: req.body.salePrice,
             notes: req.body.notes
         }).then(function(data) {
 
@@ -169,7 +169,7 @@ module.exports = function(app) {
             // REPORT ERRORS
                 res.send(error);
             });
-    }
+    });
 
     app.post("/api/newComp", function(req, res) {
 
@@ -179,36 +179,35 @@ module.exports = function(app) {
         console.log("------------------------");
 
         db.leaseComps.create({
-            siteName: req.body.siteName
-            siteStreet1: req.body.siteStreet1
-            siteStreet2: req.body.siteStreet2
-            siteCity: req.body.siteCity
-            siteState: req.body. siteState
-            siteZip: req.body.siteZip
-            siteAddress: req.body.siteAddress
-            dateEntered: req.body.dateEntered 
-            dateSold: req.body.dateSold 
-            buildingSF: req.body.buildingSF
-            totalAcreage: req.body.totalAcreage  
-            salePrice: req.body.salePrice
-            dateEntered: req.body.dateEntered  
-            numUnits: req.body.numUnits
-            oneBedRent: req.body.oneBedRent
-            twoBedRent: req.body.twoBedRent
-            threeBedRent: req.body.threeBedRent
+            siteName: req.body.siteName,
+            siteStreet1: req.body.siteStreet1,
+            siteStreet2: req.body.siteStreet2,
+            siteCity: req.body.siteCity,
+            siteState: req.body. siteState,
+            siteZip: req.body.siteZip,
+            siteAddress: req.body.siteAddress,
+            dateEntered: req.body.dateEntered, 
+            dateSold: req.body.dateSold,
+            buildingSF: req.body.buildingSF,
+            totalAcreage: req.body.totalAcreage,  
+            salePrice: req.body.salePrice,
+            dateEntered: req.body.dateEntered,  
+            numUnits: req.body.numUnits,
+            oneBedRent: req.body.oneBedRent,
+            twoBedRent: req.body.twoBedRent,
+            threeBedRent: req.body.threeBedRent,
             notes: req.body.notes
         }).then(function(data) {
 
             // REDIRECT TO CENTER PAGE
-            res.redirect("/cleDev");
+            res.redirect("/leaseComps");
 
             }).catch(function(error) {
 
             // REPORT ERRORS
                 res.send(error);
             });
-    }
-
+    });
 
 
     /// =============== ADD OR EDIT TENANTS ================== ///

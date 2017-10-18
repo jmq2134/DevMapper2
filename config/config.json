@@ -1,23 +1,23 @@
 {
   "development": {
     "username": "root",
-    "password": "Jujupop12",
+    "password": "5833",
     "database": "DevMapper2",
-    "host": "us-cdbr-iron-east-05.cleardb.net",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Jujupop12",
+    "password": "5833",
     "database": "DevMapper2",
-    "host": "us-cdbr-iron-east-05.cleardb.net",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "Jujupop12",
+    "password": "5833",
     "database": "DevMapper2",
-    "host": "us-cdbr-iron-east-05.cleardb.net",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
