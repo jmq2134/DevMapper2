@@ -104,6 +104,41 @@ module.exports = function(app) {
     // ------------------------------------------- POST ROUTES ------------------------------------------------- //
 
 
+    /// ================ ADD FIP DEV SITE ==================== ///
+
+    app.post("/api/newFipSite", function(req, res) {
+
+        // LOG INFO FROM REQ.BODY FROM MODAL FORM
+        console.log("------------------------");
+        console.log(req.body);
+        console.log("------------------------");
+
+        db.fipDev.create({
+            siteName: req.body.siteName
+            siteStreet1: req.body.siteStreet1
+            siteStreet2: req.body.siteStreet2
+            siteCity: req.body.siteCity
+            siteState: req.body. siteState
+            siteZip: req.body.siteZip
+            siteAddress: req.body.siteAddress
+            dateEntered: req.body.dateEntered         
+            owner: req.body.owner
+            numUnits: req.body.numUnits
+            salePrice: req.body.salePrice
+            notes: req.body.notes
+        }).then(function(data) {
+
+            // REDIRECT TO CENTER PAGE
+            res.redirect("/center/" + req.params.id);
+
+            }).catch(function(error) {
+
+            // REPORT ERRORS
+                res.send(error);
+            });
+    }
+
+
     /// =============== ADD OR EDIT TENANTS ================== ///
 
     app.post("/api/:id/newTenant", function(req, res) {
