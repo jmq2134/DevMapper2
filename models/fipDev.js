@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     siteCity: DataTypes.STRING,
     siteState: DataTypes.STRING, 
     siteZip: DataTypes.STRING,
+    siteAddress: DataTypes.STRING,
     dateEntered: DataTypes.DATE,
     owner: DataTypes.STRING,
     numUnits: DataTypes.STRING,

@@ -110,113 +110,7 @@
                     </div>
                 </div>
             </nav>
-            <!-- TOTAL SF, OCCUPIED SF, VACANT SF -->
-            <div class="charts">
-                <!-- EXPIRATIONS CHARTS -->
-                <div class="row" style="margin-left: 20px; margin-right: 20px; margin-top: 20px">
-                    {{!-- OCCUPANCY PIE CHART --}}
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Portfolio Occupancy</h4>
-                                <p class="category"></p>
-                            </div>
-                            <div class="content">
-                                <div class="ct-chart"></div>
-                            </div>
-                            <div class="footer">
-                                <div class="legend">
-                                    <i class="fa fa-circle text-info"></i> Occupied SF
-                                    <i class="fa fa-circle text-danger"></i> Vacant SF
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{!-- OCCUPANCY TABLE --}}
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="content">
-                                <div class="row">
-                                    {{!-- TOTAL SF --}}
-                                    <div class="col-sm-12">
-                                        <div class="card" style="margin-bottom: 20px">
-                                            <div class="content text-center">
-                                                <h3>Total SF</h3>
-                                                <hr>
-                                                <p id="totalSF"></p>
-                                                <p id="totalSFper"></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    {{!-- TOTAL OCCUPIED SF --}}
-                                    <div class="col-sm-6">
-                                        <div class="card" style="margin-bottom: 0px">
-                                            <div class="content text-center">
-                                                <h3>Occupied SF</h3>
-                                                <hr>
-                                                <p id="occupiedSF"></p>
-                                                <p id="occupiedSFper"></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{!-- TOTAL VACANT SF --}}
-                                    <div class="col-sm-6">
-                                        <div class="card" style="margin-bottom: 0px">
-                                            <div class="content text-center">
-                                                <h3>Vacant SF</h3>
-                                                <hr>
-                                                <p id="vacantSF"></p>
-                                                <p id="vacantSFper"></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="margin-left: 20px; margin-right: 20px; margin-bottom: -20px">
-                    {{!-- LEASE ROLLOVER BAR CHARTS --}}
-                    <div class="col-sm-6">
-                        {{!-- LEASE ROLLOVER REVENUE --}}
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">Lease Rollover</h4>
-                                <p class="category">Revenue</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartActivity" class="ct-barchartRev"></div>
-                            </div>
-                            <div class="footer">
-                                <div class="legend">
-                                    <i class="fa fa-circle text-info"></i> Annual Rollover ($)
-                                    <i class="fa fa-circle text-danger"></i> Cumulative Rollover ($)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        {{!-- LEASE ROLLOVER SQUARE FOOTAGE --}}
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">Lease Rollover</h4>
-                                <p class="category">Square Footage</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartActivity" class="ct-barchart"></div>
-                            </div>
-                            <div class="footer">
-                                <div class="legend">
-                                    <i class="fa fa-circle text-info"></i> Annual Rollover (SF)
-                                    <i class="fa fa-circle text-danger"></i> Cumulative Rollover (SF)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
             <!-- TABLE -->
             <div class="content">
                 <div class="container-fluid">
@@ -229,40 +123,28 @@
                                 </div>
                                 <table id="bootstrap-table" class="table table-striped">
                                     <thead>
-                                        <th data-field="state" data-checkbox="true"></th>
                                         <th data-field="id" class="text-center">ID</th>
-                                        <th data-field="tenantName" class="text-center" data-sortable="true">Tenant</th>
-                                        <th data-field="tenantSF" data-sortable="true">SF</th>
-                                        <th data-field="leaseStart" data-sortable="true">Start</th>
-                                        <th data-field="leaseEnd" data-sortable="true">Expiration</th>
-                                        <th data-field="basePSF" data-sortable="true">BasePSF</th>
-                                        <th data-field="camPSF" data-sortable="true">CamPSF</th>
-                                        <th data-field="totalPSF" data-sortable="true">TotalPSF</th>
-                                        <th data-field="totalAnnual" data-sortable="true">Annual Rent</th>
-                                        <th data-field="salesPSF" data-sortable="true">Sales PSF</th>
-                                        <th data-field="salesAnnual" data-sortable="true">Annual Sales</th>
-                                        <th data-field="optionNotice" data-sortable="true">Option Notice</th>
-                                        <th data-field="optionRent" data-sortable="true">Option Rent</th>
-                                    </thead>
+                                        <th data-field="siteName" class="text-center" data-sortable="true">Site</th>
+                                        <th data-field="siteAddress" data-sortable="true">Address</th>
+                                        <th data-field="dateEntered" data-sortable="true">Date Entered</th>
+                                        <th data-field="owner" data-sortable="true">Owner</th>
+                                        <th data-field="numUnits" data-sortable="true"># Units</th>
+                                        <th data-field="salePrice" data-sortable="true">Sale Price</th>
+                                        <th data-field="notes" data-sortable="true">Notes</th>
+                                   </thead>
                                     <tbody>
-                                        {{#each centers}} {{#each this.Tenants}}
+                                        {{#each cleDev}} 
                                         <tr>
-                                            <td></td>
                                             <td class="id">{{id}}</td>
-                                            <td class="tenantName">{{tenantName}}</td>
-                                            <td class="tenantSF">{{number tenantSF}}</td>
-                                            <td>{{leaseStart}}</td>
-                                            <td class="leaseEnd">{{leaseEnd}}</td>
-                                            <td>{{ number basePSF "0,0[.]00" }}</td>
-                                            <td>{{ number camPSF }}</td>
-                                            <td>{{ number totalPSF }}</td>
-                                            <td>{{ number annualRent }}</td>
-                                            <td>{{ number salesPSF }}</td>
-                                            <td>{{ number annualSales }}</td>
-                                            <td>{{noticeDate}}</td>
-                                            <td>{{ number noticeRent }}</td>
+                                            <td class="siteName">{{siteName}}</td>
+                                            <td class="siteAddress">{{siteAddress}}</td>
+                                            <td class="dateEntered">{{dateEntered}}</td>
+                                            <td class="owner">{{owner}}</td>
+                                            <td class="numUnits">{{numUnits}}</td>
+                                            <td class="salePrice">{{salePrice}}</td>
+                                            <td class="notes">{{notes}}</td>
                                         </tr>
-                                        {{/each}} {{/each}}
+                                        {{/each}}
                                     </tbody>
                                 </table>
                             </div>
@@ -282,88 +164,100 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal for Create Feature -->
-            <div class="modal fade" id="modal--create" tabindex="-1" role="dialog" aria-labelledby="modal--create">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content" style="padding: 20px">
+        <!-- ADD CUSTOMER MODAL -->
+        <div class="modal fade" id="addCustomerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLongTitle">Add A Site</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
                         <div class="modal-body">
-                            <div class="panel panel-default">
-                                <div class="row ">
-                                    <div class="panel-body ">
-                                        <form class="create-update-form" action="/api/{{center.id}}/newTenant" method="POST">
-                                            <div class="row">
-                                                <legend>Tenant Info</legend>
-                                                <!-- hidden center id -->
-                                                <input type="hidden" name="centerId" value="{{center}}" />
-                                                <!-- hidden tenant id if available -->
-                                                <input type="hidden" name="id" id="id" />
-                                                <!-- tenantName -->
-                                                <div class="col-md-6">
-                                                    <input type="text" placeholder="Tenant Name" id="tenantName" name="tenantName" class="form-control">
-                                                </div>
-                                                <!-- tenantSF -->
-                                                <div class="col-md-6">
-                                                    <input type="text" placeholder="Square Footage" id="tenantSF" name="tenantSF" class="form-control">
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <legend>Lease Dates</legend>
-                                                <!-- leaseStart -->
-                                                <div class="col-md-6">
-                                                    <div class="form-group ">
-                                                        <input type="text" class="form-control datepicker" id="leaseStart" name="leaseStart" placeholder="Lease Start" />
+                            <div class="row">
+                                <div class="col-lg-12">
+                                <!-- LEFT PANEL -->
+                                    <div class="col-lg-6">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <form class='modal-form'>
+                                                    <div class="form-group">
+                                                        <label for="name_id">Site</label>
+                                                        <input type="text" class="form-control" id="name_id" placeholder="Person name, compnay name">
                                                     </div>
-                                                </div>
-                                                <!-- leaseEnd -->
-                                                <div class="col-md-6">
-                                                    <div class="form-group ">
-                                                        <input type="text" class="form-control datepicker" id="leaseEnd" name="leaseEnd" placeholder="Lease End" />
+                                                    <div class="form-group">
+                                                        <!-- Street 1 -->
+                                                        <label for="street1_id" class="control-label">Street Address 1</label>
+                                                        <input type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, c/o">
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <legend>Rent and Sales PSF</legend>
-                                                <!-- basePSF -->
-                                                <div class="col-md-4">
-                                                    <input type="text" placeholder="Base Rent PSF" id="basePSF" name="basePSF" class="form-control">
-                                                </div>
-                                                <!-- camPSF -->
-                                                <div class="col-md-4">
-                                                    <input type="text" placeholder="CAM Rent PSF" id="camPSF" name="camPSF" class="form-control">
-                                                </div>
-                                                <!-- salesPSF -->
-                                                <div class="col-md-4">
-                                                    <input type="text" placeholder="Sales PSF" id="salesPSF" name="salesPSF" class="form-control">
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <legend>Option</legend>
-                                                <!-- noticeDate -->
-                                                <div class="col-md-6 ">
-                                                    <div class="form-group ">
-                                                        <input type="text" class="form-control datepicker" id="noticeDate" name="noticeDate" placeholder="Notice Date" />
+                                                    <div class="form-group">
+                                                        <!-- Street 2 -->
+                                                        <label for="street2_id" class="control-label">Street Address 2 (optional) </label>
+                                                        <input type="text" class="form-control" id="street2_id" name="street2" placeholder="Apartment, suite, unit, building, floor, etc.">
                                                     </div>
-                                                </div>
-                                                <!-- noticeRent -->
-                                                <div class="col-md-6">
-                                                    <input type="text" placeholder="Notice Rent" id="noticeRent" name="noticeRent" class="form-control ">
-                                                </div>
+                                                    <div class="form-group">
+                                                        <!-- City-->
+                                                        <label for="city_id" class="control-label">City</label>
+                                                        <input type="text" class="form-control" id="city_id" name="city" placeholder="Cleveland">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- State Button -->
+                                                        <label for="state_id" class="control-label">State</label>
+                                                        <select class="form-control" id="state_id">
+                                                            <option value="OH">Ohio</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- Zip Code-->
+                                                        <label for="zip_id" class="control-label">Zip Code</label>
+                                                        <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####">
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <br>
-                                            <div class="row">
-                                                <!-- close button -->
-                                                <button type="button" class="btn btn-danger btn-fill btn-wd" data-dismiss="modal">Close</button>
-                                                <!-- submit button -->
-                                                <button class="btn btn-success btn-fill btn-wd " method="GET" action="/" type="submit " id="form--event-add">Submit</button>
+                                        </div>
+                                    </div>
+                                    <!-- RIGHT PANEL -->
+                                    <div class="col-lg-6">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <form class='modal-form'>
+                                                    <div class="form-group">
+                                                        <label for="dateEntered_id">Date Entered</label>
+                                                        <input type="date" class="form-control" id="dateEntered_id">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="owner_id">Owner</label>
+                                                        <input type="text" class="form-control" id="owner_id">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="numUnits_id"># of Units</label>
+                                                        <input type="number" class="form-control" id="numUnits_id">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="salePrice_id">Sale Price</label>
+                                                        <input type="number" class="form-control" id="salePrice_id">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="notes_id">Notes</label>
+                                                        <textarea class = "form-control" rows = "5" id="notes_id"></textarea>
+                                                    </div>
+                                                </form>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- MODAL BUTTONS - SAVE & CLOSE -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="saveCustomerInfo">Save changes</button>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
 </body>

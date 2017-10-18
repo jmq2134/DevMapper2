@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 
 module.exports = function(sequelize, DataTypes) {
   
-  var Centers = sequelize.define("Centers", {
+  var cleDev = sequelize.define("cleDev", {
 
     siteName: DataTypes.STRING,
     siteStreet1: DataTypes.STRING,
@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     siteCity: DataTypes.STRING,
     siteState: DataTypes.STRING, 
     siteZip: DataTypes.STRING,
+    siteAddress: DataTypes.STRING,
     dateEntered: DataTypes.DATE,
     owner: DataTypes.STRING,
     numUnits: DataTypes.STRING,
@@ -19,14 +20,6 @@ module.exports = function(sequelize, DataTypes) {
 
   });
 
-  Centers.associate = function(models) {
-
-    Centers.hasMany(models.Tenants, {
-      onDelete: "cascade"
-    });
-
-  };
-
-  return Centers;
+  return cleDev;
 
 };
