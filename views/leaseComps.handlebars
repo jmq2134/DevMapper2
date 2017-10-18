@@ -126,20 +126,20 @@
                                 <table id="bootstrap-table" class="table table-striped">
                                     <thead>
                                         <th data-field="id" class="text-center">ID</th>
-                                        <th data-field="id" class="text-center">Site</th>
-                                        <th data-field="id" class="text-center">Address</th>
-                                        <th data-field="id" class="text-center">Date Entered</th>
-                                        <th data-field="id" class="text-center">Date Transferred</th>
-                                        <th data-field="id" class="text-center">Sale Price</th>
-                                        <th data-field="id" class="text-center">Building SF</th>
-                                        <th data-field="id" class="text-center">Acreage</th>
-                                        <th data-field="id" class="text-center">Cost Per Acre</th>
-                                        <th data-field="id" class="text-center"># of Units</th>
-                                        <th data-field="id" class="text-center">Cost Per Unit</th>
-                                        <th data-field="id" class="text-center">1-Bed Avg. Rent</th>
-                                        <th data-field="id" class="text-center">2-Bed Avg. Rent</th>
-                                        <th data-field="id" class="text-center">3-Bed Avg. Rent</th>
-                                        <th data-field="id" class="text-center">Notes</th>
+                                        <th data-field="siteName" class="text-center" data-sortable="true">Site</th>
+                                        <th data-field="siteAddress" class="text-center" data-sortable="true">Address</th>
+                                        <th data-field="dateEntered" class="text-center" data-sortable="true">Date Entered</th>
+                                        <th data-field="dateTransfered" class="text-center" data-sortable="true">Date Transferred</th>
+                                        <th data-field="salePrice" class="text-center" data-sortable="true">Sale Price</th>
+                                        <th data-field="buildingSF" class="text-center" data-sortable="true">Building SF</th>
+                                        <th data-field="totalAcreage" class="text-center" data-sortable="true">Acreage</th>
+                                        <th data-field="costPerAcre" class="text-center" data-sortable="true">Cost Per Acre</th>
+                                        <th data-field="numUnits" class="text-center" data-sortable="true"># of Units</th>
+                                        <th data-field="costPerUnit" class="text-center" data-sortable="true">Cost Per Unit</th>
+                                        <th data-field="oneBedRent" class="text-center" data-sortable="true">1-Bed Avg. Rent</th>
+                                        <th data-field="twoBedRent" class="text-center" data-sortable="true">2-Bed Avg. Rent</th>
+                                        <th data-field="threeBedRent" class="text-center" data-sortable="true">3-Bed Avg. Rent</th>
+                                        <th data-field="notes" class="text-center" data-sortable="true">Notes</th>
                                    </thead>
                                     <tbody>
                                         {{#each fipDev}} 
@@ -148,11 +148,14 @@
                                             <td class="siteName">{{siteName}}</td>
                                             <td class="siteAddress">{{siteAddress}}</td>
                                             <td class="dateEntered">{{dateEntered}}</td>
+                                            <td class="dateTransfered">{{dateTransfered}}</td>
                                             <td class="dateSold">{{dateSold}}</td>
                                             <td class="buildingSF">{{buildingSF}}</td>
                                             <td class="totalAcreage">{{totalAcreage}}</td>
+                                            <td class="costPerAcre">{{costPerAcre}}</td>
                                             <td class="salePrice">{{salePrice}}</td>
                                             <td class="numUnits">{{numUnits}}</td>
+                                            <td class="costPerUnit">{{costPerUnit}}</td>
                                             <td class="oneBedRent">{{oneBedRent}}</td>
                                             <td class="twoBedRent">{{twoBedRent}}</td>
                                             <td class="threeBedRent">{{threeBedRent}}</td>
