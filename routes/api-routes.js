@@ -23,163 +23,81 @@ module.exports = function(app) {
         res.render('signup', req);
     });
 
-    /// ================= RENDER USER ================ ///
-    app.get("/user/:userID", function(req, res) {
-        db.Users.findOne({
-            where: {
-                id: req.params.id
-            }
-        }).then(function(user) {
-            res.render('user', {
-                user: user
-            });
-        })
-    });
-
-    /// ================ RENDER MAP ================== ///
-    app.get("/map", function(req, res) {
-        db.Centers.findAll().then(function(data) {
-            var hbsObject = { centers: data };
+    /// ================ RENDER cleDev ================== ///
+    app.get("/cleDev", function(req, res) {
+        db.cleDev.findAll().then(function(data) {
+            var hbsObject = { cleDev: data };
             // res.json(hbsObject);
-            res.render('map', hbsObject);
+            res.render('cleDev', hbsObject);
         });
     });
 
-    /// =============== RENDER CALENDAR ============== ///
-    app.get("/calendar", function(req, res) {
-        db.Centers.findAll().then(function(data) {
-            var hbsObject = { centers: data };
+    /// ================ RENDER fipDev ================== ///
+    app.get("/fipDev", function(req, res) {
+        db.fipDev.findAll().then(function(data) {
+            var hbsObject = { fipDev: data };
             // res.json(hbsObject);
-            res.render('calendar', hbsObject);
+            res.render('fipDev', hbsObject);
         });
     });
 
-    /// ============= ROUTE TO DASHBOARD ============ ///
-    app.get("/dashboard", function(req, res) {
-        db.Centers.findAll({
-            include: [{
-                model: db.Tenants,
-                required: false
-            }]
-        }).then(function(data) {
-            var hbsObject = { centers: data };
+    /// ================ RENDER leaseComps ================== ///
+    app.get("/leaseComps", function(req, res) {
+        db.leaseComps.findAll().then(function(data) {
+            var hbsObject = { leaseComps: data };
             // res.json(hbsObject);
-            res.render('dashboard',
-                hbsObject
-            );
-        })
+            res.render('leaseComps', hbsObject);
+        });
     });
 
-    /// === ROUTE TO SHOPPING CENTER PAGE BY ID ==== ///
-    app.get("/center/:id", function(req, res) {
+    /// ================ RENDER CLE MAP ================== ///
+    app.get("/clemap", function(req, res) {
+        db.cleDev.findAll().then(function(data) {
+            var hbsObject = { cleDev: data };
+            // res.json(hbsObject);
+            res.render('clemap', hbsObject);
+        });
+    });
 
-        var hbsObject = {};
+    /// ================ RENDER FIP MAP ================== ///
+    app.get("/fipmap", function(req, res) {
+        db.fipDev.findAll().then(function(data) {
+            var hbsObject = { fipDev: data };
+            // res.json(hbsObject);
+            res.render('fipmap', hbsObject);
+        });
+    });
 
-        db.Centers.findAll().then(function(data) {
-            hbsObject.centers = data;
-            console.log(hbsObject.centers);
-        }).then(function() {
-            db.Centers.findOne({
-                where: {
-                    id: req.params.id
-                },
-                include: [{
-                    model: db.Tenants,
-                    required: false
-                }]
-            }).then(function(data) {
-
-                hbsObject.tenants = data
-                res.render('center', hbsObject);
-                //res.json(hbsObject);
-            });
-        })
+    /// ================ RENDER LEASE COMPS MAP ================== ///
+    app.get("/compsmap", function(req, res) {
+        db.leaseComps.findAll().then(function(data) {
+            var hbsObject = { leaseComps: data };
+            // res.json(hbsObject);
+            res.render('compsmap', hbsObject);
+        });
     });
 
 
     // ------------------------------------------- API GET ROUTES ----------------------------------------------- //
 
-    /// ================= SHOW ALL CENTERS =================== ///
-    app.get("/api/centers", function(req, res) {
-        db.Centers.findAll({}).then(function(dbCenters) {
-            res.json(dbCenters);
+    /// ================= SHOW ALL cleDev =================== ///
+    app.get("/api/cleDev", function(req, res) {
+        db.cleDev.findAll({}).then(function(dbcleDev) {
+            res.json(dbcleDev);
         });
     })
 
-    /// ================= SHOW ALL TENANTS =================== ///
-    app.get("/api/tenants", function(req, res) {
-        db.Tenants.findAll({}).then(function(dbTenants) {
-            res.json(dbTenants);
+    /// ================= SHOW ALL fipDev =================== ///
+    app.get("/api/fipDev", function(req, res) {
+        db.fipDev.findAll({}).then(function(dbfipDev) {
+            res.json(dbfipDev);
         });
     })
 
-    /// =================== TENANT EVENTS ==================== ///
-    app.get("/api/tenants/events", function(req, res) {
-        db.Tenants.findAll({}).then(function(dbTenants) {
-            return dbTenants
-        }).then(function(data) {
-            var eventsArray = [];
-
-            /// EXPIRATION DATES
-            for (i = 0; i < data.length; i++) {
-
-                if (data[i].tenantName !== "Vacant") {
-                    title = data[i].tenantName + " Expiration";
-
-                    var date = data[i].leaseEnd;
-
-                    var expdate = "" + new Date(date) + "";
-
-                    var arr = date.split("/");
-
-                    year = parseInt(arr[2]);
-                    month = parseInt(arr[0]);
-                    day = parseInt(arr[1]) + 1;
-
-                    var expDate = year + "-" + month + "-" + day;
-
-                    eventsArray.push({ title: title, start: expdate, allDay: true, className: 'event-red' });
-
-                }
-            }
-
-            /// OPTION NOTICE DATES
-            for (i = 0; i < data.length; i++) {
-
-                if (data[i].tenantName !== "Vacant") {
-                    title = data[i].tenantName + " Option Notice";
-
-                    var date = data[i].noticeDate;
-
-                    var expdate = "" + new Date(date) + "";
-
-                    var arr = date.split("/");
-
-                    year = parseInt(arr[2]);
-                    month = parseInt(arr[0]);
-                    day = parseInt(arr[1]) + 1;
-
-                    var expDate = year + "-" + month + "-" + day;
-
-                    eventsArray.push({ title: title, start: expdate, allDay: true, className: 'event-azure' });
-                }
-            }
-
-            return eventsArray
-        }).then(function(eventsArray) {
-            console.log(eventsArray);
-            res.json(eventsArray)
-        })
-    })
-
-    /// ================= SHOW TENANT BY ID ================== ///
-    app.get("/api/tenants/:id", function(req, res) {
-        db.Tenants.findAll({
-            where: {
-                id: req.params.id
-            }
-        }).then(function(dbTenants) {
-            res.json(dbTenants);
+    /// ================= SHOW ALL leaseComps =================== ///
+    app.get("/api/leaseComps", function(req, res) {
+        db.leaseComps.findAll({}).then(function(dbleaseComps) {
+            res.json(dbleaseComps);
         });
     })
 

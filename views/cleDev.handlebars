@@ -1,0 +1,369 @@
+<body>
+    <!-- SIDE NAV -->
+    <div class="wrapper">
+        <div class="sidebar" data-color="green" data-image="/assets/img/full-screen-image-3.jpg">
+            <!--
+            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+            Tip 2: you can also add an image using data-image tag
+        -->
+            <div class="logo">
+                <a href="" class="logo-text">
+                FIP
+            </a>
+            </div>
+            <div class="logo logo-mini">
+                <a href="" class="logo-text">
+                FIP
+            </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <!-- NAVBAR -->
+                <ul class="nav">
+                    <li class="active">
+                        <a href="/dashboard">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                    </li>
+                    <!-- DATABASES -->
+                    <li>
+                        <a data-toggle="collapse" href="#componentsExamples">
+                            <i class="pe-7s-plugin"></i>
+                                <p>Databases
+                                    <b class="caret"></b>
+                                </p>
+                         </a>
+                        <div class="collapse" id="componentsExamples">
+                            <ul class="nav">
+                                <li>
+                                    <a href="/fipDev">FIP Development</a>
+                                </li>
+                                <li>
+                                    <a href="/cleDev">Cleveland Development</a>
+                                </li>                             
+                                <li>
+                                    <a href="/leaseComps">Lease Comparables</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- MAPS -->
+                    <li>
+                        <a data-toggle="collapse" href="#componentsExamples">
+                            <i class="pe-7s-plugin"></i>
+                                <p>Maps
+                                    <b class="caret"></b>
+                                </p>
+                         </a>
+                        <div class="collapse" id="componentsExamples">
+                            <ul class="nav">
+                                <li>
+                                    <a href="/fipmap">FIP Map</a>
+                                </li>
+                                <li>
+                                    <a href="/clemap">Cleveland Map</a>
+                                </li>                             
+                                <li>
+                                    <a href="/compsmap">Lease Comp Map</a>
+                                </li>
+                                <li>
+                                    <a href="/allmap">All Sites</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- TOP HEADER -->
+        <div class="main-panel">
+            <nav class="navbar navbar-default" id="navbar-jump">
+                <div class="container-fluid">
+                    <div class="navbar-minimize">
+                        <button id="minimizeSidebar" class="btn btn-warning btn-fill btn-round btn-icon">
+                            <i class="fa fa-ellipsis-v visible-on-sidebar-regular"></i>
+                            <i class="fa fa-navicon visible-on-sidebar-mini"></i>
+                        </button>
+                    </div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Combined Portfolio</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#bootstrap-table" class="btn btn-wd btn-info">
+                                        View Tenants
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/logout" class="btn btn-wd btn-danger">
+                                        Log out
+                                    </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- TOTAL SF, OCCUPIED SF, VACANT SF -->
+            <div class="charts">
+                <!-- EXPIRATIONS CHARTS -->
+                <div class="row" style="margin-left: 20px; margin-right: 20px; margin-top: 20px">
+                    {{!-- OCCUPANCY PIE CHART --}}
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Portfolio Occupancy</h4>
+                                <p class="category"></p>
+                            </div>
+                            <div class="content">
+                                <div class="ct-chart"></div>
+                            </div>
+                            <div class="footer">
+                                <div class="legend">
+                                    <i class="fa fa-circle text-info"></i> Occupied SF
+                                    <i class="fa fa-circle text-danger"></i> Vacant SF
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{!-- OCCUPANCY TABLE --}}
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    {{!-- TOTAL SF --}}
+                                    <div class="col-sm-12">
+                                        <div class="card" style="margin-bottom: 20px">
+                                            <div class="content text-center">
+                                                <h3>Total SF</h3>
+                                                <hr>
+                                                <p id="totalSF"></p>
+                                                <p id="totalSFper"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    {{!-- TOTAL OCCUPIED SF --}}
+                                    <div class="col-sm-6">
+                                        <div class="card" style="margin-bottom: 0px">
+                                            <div class="content text-center">
+                                                <h3>Occupied SF</h3>
+                                                <hr>
+                                                <p id="occupiedSF"></p>
+                                                <p id="occupiedSFper"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{!-- TOTAL VACANT SF --}}
+                                    <div class="col-sm-6">
+                                        <div class="card" style="margin-bottom: 0px">
+                                            <div class="content text-center">
+                                                <h3>Vacant SF</h3>
+                                                <hr>
+                                                <p id="vacantSF"></p>
+                                                <p id="vacantSFper"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 20px; margin-right: 20px; margin-bottom: -20px">
+                    {{!-- LEASE ROLLOVER BAR CHARTS --}}
+                    <div class="col-sm-6">
+                        {{!-- LEASE ROLLOVER REVENUE --}}
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">Lease Rollover</h4>
+                                <p class="category">Revenue</p>
+                            </div>
+                            <div class="content">
+                                <div id="chartActivity" class="ct-barchartRev"></div>
+                            </div>
+                            <div class="footer">
+                                <div class="legend">
+                                    <i class="fa fa-circle text-info"></i> Annual Rollover ($)
+                                    <i class="fa fa-circle text-danger"></i> Cumulative Rollover ($)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        {{!-- LEASE ROLLOVER SQUARE FOOTAGE --}}
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">Lease Rollover</h4>
+                                <p class="category">Square Footage</p>
+                            </div>
+                            <div class="content">
+                                <div id="chartActivity" class="ct-barchart"></div>
+                            </div>
+                            <div class="footer">
+                                <div class="legend">
+                                    <i class="fa fa-circle text-info"></i> Annual Rollover (SF)
+                                    <i class="fa fa-circle text-danger"></i> Cumulative Rollover (SF)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- TABLE -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="toolbar">
+                                    <div class="col-md-3">
+                                    </div>
+                                </div>
+                                <table id="bootstrap-table" class="table table-striped">
+                                    <thead>
+                                        <th data-field="state" data-checkbox="true"></th>
+                                        <th data-field="id" class="text-center">ID</th>
+                                        <th data-field="tenantName" class="text-center" data-sortable="true">Tenant</th>
+                                        <th data-field="tenantSF" data-sortable="true">SF</th>
+                                        <th data-field="leaseStart" data-sortable="true">Start</th>
+                                        <th data-field="leaseEnd" data-sortable="true">Expiration</th>
+                                        <th data-field="basePSF" data-sortable="true">BasePSF</th>
+                                        <th data-field="camPSF" data-sortable="true">CamPSF</th>
+                                        <th data-field="totalPSF" data-sortable="true">TotalPSF</th>
+                                        <th data-field="totalAnnual" data-sortable="true">Annual Rent</th>
+                                        <th data-field="salesPSF" data-sortable="true">Sales PSF</th>
+                                        <th data-field="salesAnnual" data-sortable="true">Annual Sales</th>
+                                        <th data-field="optionNotice" data-sortable="true">Option Notice</th>
+                                        <th data-field="optionRent" data-sortable="true">Option Rent</th>
+                                    </thead>
+                                    <tbody>
+                                        {{#each centers}} {{#each this.Tenants}}
+                                        <tr>
+                                            <td></td>
+                                            <td class="id">{{id}}</td>
+                                            <td class="tenantName">{{tenantName}}</td>
+                                            <td class="tenantSF">{{number tenantSF}}</td>
+                                            <td>{{leaseStart}}</td>
+                                            <td class="leaseEnd">{{leaseEnd}}</td>
+                                            <td>{{ number basePSF "0,0[.]00" }}</td>
+                                            <td>{{ number camPSF }}</td>
+                                            <td>{{ number totalPSF }}</td>
+                                            <td>{{ number annualRent }}</td>
+                                            <td>{{ number salesPSF }}</td>
+                                            <td>{{ number annualSales }}</td>
+                                            <td>{{noticeDate}}</td>
+                                            <td>{{ number noticeRent }}</td>
+                                        </tr>
+                                        {{/each}} {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--  end card  -->
+                        </div>
+                        <!-- end col-md-12 -->
+                    </div>
+                    <!-- end row -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="pull-right">
+                                <a class="btn btn-fill btn-info" href="#navbar-jump">
+                                    <i class="pe-7s-angle-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal for Create Feature -->
+            <div class="modal fade" id="modal--create" tabindex="-1" role="dialog" aria-labelledby="modal--create">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="padding: 20px">
+                        <div class="modal-body">
+                            <div class="panel panel-default">
+                                <div class="row ">
+                                    <div class="panel-body ">
+                                        <form class="create-update-form" action="/api/{{center.id}}/newTenant" method="POST">
+                                            <div class="row">
+                                                <legend>Tenant Info</legend>
+                                                <!-- hidden center id -->
+                                                <input type="hidden" name="centerId" value="{{center}}" />
+                                                <!-- hidden tenant id if available -->
+                                                <input type="hidden" name="id" id="id" />
+                                                <!-- tenantName -->
+                                                <div class="col-md-6">
+                                                    <input type="text" placeholder="Tenant Name" id="tenantName" name="tenantName" class="form-control">
+                                                </div>
+                                                <!-- tenantSF -->
+                                                <div class="col-md-6">
+                                                    <input type="text" placeholder="Square Footage" id="tenantSF" name="tenantSF" class="form-control">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <legend>Lease Dates</legend>
+                                                <!-- leaseStart -->
+                                                <div class="col-md-6">
+                                                    <div class="form-group ">
+                                                        <input type="text" class="form-control datepicker" id="leaseStart" name="leaseStart" placeholder="Lease Start" />
+                                                    </div>
+                                                </div>
+                                                <!-- leaseEnd -->
+                                                <div class="col-md-6">
+                                                    <div class="form-group ">
+                                                        <input type="text" class="form-control datepicker" id="leaseEnd" name="leaseEnd" placeholder="Lease End" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <legend>Rent and Sales PSF</legend>
+                                                <!-- basePSF -->
+                                                <div class="col-md-4">
+                                                    <input type="text" placeholder="Base Rent PSF" id="basePSF" name="basePSF" class="form-control">
+                                                </div>
+                                                <!-- camPSF -->
+                                                <div class="col-md-4">
+                                                    <input type="text" placeholder="CAM Rent PSF" id="camPSF" name="camPSF" class="form-control">
+                                                </div>
+                                                <!-- salesPSF -->
+                                                <div class="col-md-4">
+                                                    <input type="text" placeholder="Sales PSF" id="salesPSF" name="salesPSF" class="form-control">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <legend>Option</legend>
+                                                <!-- noticeDate -->
+                                                <div class="col-md-6 ">
+                                                    <div class="form-group ">
+                                                        <input type="text" class="form-control datepicker" id="noticeDate" name="noticeDate" placeholder="Notice Date" />
+                                                    </div>
+                                                </div>
+                                                <!-- noticeRent -->
+                                                <div class="col-md-6">
+                                                    <input type="text" placeholder="Notice Rent" id="noticeRent" name="noticeRent" class="form-control ">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <!-- close button -->
+                                                <button type="button" class="btn btn-danger btn-fill btn-wd" data-dismiss="modal">Close</button>
+                                                <!-- submit button -->
+                                                <button class="btn btn-success btn-fill btn-wd " method="GET" action="/" type="submit " id="form--event-add">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</body>
