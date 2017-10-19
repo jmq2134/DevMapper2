@@ -133,7 +133,7 @@ module.exports = function(app) {
             siteState: req.body. siteState,
             siteZip: req.body.siteZip,
             siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
-            entered: entered,        
+            entered: req.body.entered,        
             owner: req.body.owner,
             numUnits: req.body.numUnits,
             salePrice: req.body.salePrice,
