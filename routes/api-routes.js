@@ -94,6 +94,16 @@ module.exports = function(app) {
         });
     })
 
+    /// =============== SHOW ALL leaseComps ================= ///
+    app.get("/api/leaseComps", function(req, res) {
+        db.leaseComps.findAll({}).then(function(dbleaseComps) {
+            res.json(dbleaseComps);
+        });
+    })
+
+
+    // ------------------------------------------- API GET ROUTES BY ID ------------------------------------------ //
+
     /// ================= SHOW fipDev BY id =================== ///
     app.get("/api/fipDev/:id", function(req, res) {
         db.fipDev.findAll({
@@ -105,14 +115,20 @@ module.exports = function(app) {
         });
     })
 
-    /// =============== SHOW ALL leaseComps ================= ///
-    app.get("/api/leaseComps", function(req, res) {
-        db.leaseComps.findAll({}).then(function(dbleaseComps) {
-            res.json(dbleaseComps);
+    /// ================= SHOW cleDev BY id =================== ///
+    app.get("/api/cleDev/:id", function(req, res) {
+        db.cleDev.findAll({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbcleDev) {
+            res.json(dbcleDev);
         });
     })
 
-    // ------------------------------------------- POST ROUTES ------------------------------------------------- //
+
+
+    // ------------------------------------------- POST ROUTES -------------------------------------------------- //
 
     /// =============== ADD FIP DEV SITE ==================== ///
 
