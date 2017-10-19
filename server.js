@@ -10,6 +10,7 @@ var Handlebars = require('handlebars');
 var HandlebarsIntl = require('handlebars-intl');
 var NumeralHelper = require("handlebars.numeral");
 var geocoder = require('geocoder');
+var helpers = require('handlebars-helpers')();
 NumeralHelper.registerHelpers(Handlebars);
 HandlebarsIntl.registerWith(Handlebars);
 

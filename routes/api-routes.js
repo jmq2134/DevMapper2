@@ -105,12 +105,17 @@ module.exports = function(app) {
 
     /// =============== ADD FIP DEV SITE ==================== ///
 
-    app.post("/api/newFipSite", function(req, res) {
+    app.post("/api/newfipsite", function(req, res) {
 
         // LOG INFO FROM REQ.BODY FROM MODAL FORM
         console.log("------------------------");
         console.log(req.body);
         console.log("------------------------");
+
+        var dateString=req.body.dateEntered;
+        dateString=new Date(dateString).toUTCString();
+        dateString=dateString.split(' ').slice(0, 4).join(' ')
+        console.log(dateString);
 
         db.fipDev.create({
             siteName: req.body.siteName,
@@ -119,8 +124,8 @@ module.exports = function(app) {
             siteCity: req.body.siteCity,
             siteState: req.body. siteState,
             siteZip: req.body.siteZip,
-            siteAddress: req.body.siteAddress,
-            dateEntered: req.body.dateEntered,        
+            siteAddress: req.body.siteStreet1 + ", " + req.body.siteStreet2 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+            dateEntered: dateString,        
             owner: req.body.owner,
             numUnits: req.body.numUnits,
             salePrice: req.body.salePrice,

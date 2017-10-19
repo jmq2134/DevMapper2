@@ -132,6 +132,7 @@
                                         <th data-field="numUnits" data-sortable="true"># Units</th>
                                         <th data-field="salePrice" data-sortable="true">Sale Price</th>
                                         <th data-field="notes" data-sortable="true">Notes</th>
+                                        <th data-field="actions" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">Actions</th>
                                    </thead>
                                     <tbody>
                                         {{#each fipDev}} 
@@ -141,8 +142,8 @@
                                             <td class="siteAddress">{{siteAddress}}</td>
                                             <td class="dateEntered">{{dateEntered}}</td>
                                             <td class="owner">{{owner}}</td>
-                                            <td class="numUnits">{{numUnits}}</td>
-                                            <td class="salePrice">{{salePrice}}</td>
+                                            <td class="numUnits">{{number numUnits}}</td>
+                                            <td class="salePrice">{{number salePrice}}</td>
                                             <td class="notes">{{notes}}</td>
                                         </tr>
                                         {{/each}}
@@ -180,13 +181,13 @@
                         <div class="row">
                             <div class="col-lg-12">
                             <!-- LEFT PANEL -->
-                                <div class="col-lg-6">
+                                <form class="create-update-form" action="/api/newfipsite" method="POST">
+                                    <div class="col-lg-6">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
-                                            <form class="create-update-form" action="/api/newFipSite" method="POST">
                                                 <div class="form-group">
                                                     <label for="name_id">Site</label>
-                                                    <input type="text" class="form-control" id="name_id" name="siteName" placeholder="Person name, compnay name">
+                                                    <input type="text" class="form-control" id="name_id" name="siteName" placeholder="Site Name">
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- Street 1 -->
@@ -215,18 +216,17 @@
                                                     <label for="zip_id" class="control-label">Zip Code</label>
                                                     <input type="text" class="form-control" id="zip_id" name="siteZip" placeholder="#####">
                                                 </div>
-                                            </form>
                                         </div>
                                     </div>
-                                </div>
+                                    </div>
+                            
                                 <!-- RIGHT PANEL -->
                                 <div class="col-lg-6">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
-                                            <form class='modal-form'>
                                                 <div class="form-group">
                                                     <label for="dateEntered_id">Date Entered</label>
-                                                    <input type="date" class="form-control" id="dateEntered_id" name="dateEntered">
+                                                    <input type="text" class="form-control datepicker" id="dateEntered_id" name="dateEntered" placeholder="Date Entered" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="owner_id">Owner</label>
@@ -244,18 +244,19 @@
                                                     <label for="notes_id">Notes</label>
                                                     <textarea class = "form-control" rows = "5" id="notes_id" name="notes"></textarea>
                                                 </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
+  
                         </div>
                     </div>
-                    <!-- MODAL BUTTONS - SAVE & CLOSE -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button class="btn btn-success btn-fill btn-wd " method="GET" action="/" type="submit " id="form--event-add">Save changes</button>
-                    </div>
+                        <!-- MODAL BUTTONS - SAVE & CLOSE -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button class="btn btn-success btn-fill btn-wd " method="GET" action="/" type="submit " id="form--event-add">Save changes</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

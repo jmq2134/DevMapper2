@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    console.log("addfip loading");
+
     // Getting references to the add new tenant inputs
     var siteName = $("[name=siteName]");
     var siteStreet1 = $("[name=siteStreet1]");
@@ -7,7 +9,6 @@ $(document).ready(function() {
     var siteCity = $("[name=siteCity]");
     var siteState = $("[name=siteState]");
     var siteZip = $("[name=siteZip]");
-    var siteAddress = siteStreet1 + ", " + siteStreet2 + ", " + siteCity + ", " + siteState + " " + siteZip;
     var dateEntered = $("[name=dateEntered]");
     var owner = $("[name=owner]");
     var numUnits = $("[name=numUnits]");
@@ -32,7 +33,7 @@ $(document).ready(function() {
         // A function for creating a new tenant
         function newFipSite(fipData) {
             console.log(fipData);
-            $.post("/api/newFipSite", fipData, function(){
+            $.post("/api/newfipsite", fipData, function(){
                 console.log('request ended')
             })
             console.log("adding new site to fipDev database");
@@ -56,9 +57,6 @@ $(document).ready(function() {
                 .val()
                 .trim(),
             siteZip: siteZip
-                .val()
-                .trim(),
-            siteAddress: siteAddress
                 .val()
                 .trim(),
             dateEntered: dateEntered
