@@ -124,8 +124,8 @@
                                 </div>
                                 <table id="bootstrap-table" class="table table-striped">
                                     <thead>
-                                        <th data-field="id" class="text-center">ID</th>
-                                        <th data-field="siteName" class="text-center" data-sortable="true">Site</th>
+                                        <th data-field="id" class="text-left">ID</th>
+                                        <th data-field="siteName" class="text-left" data-sortable="true">Site</th>
                                         <th data-field="siteAddress" data-sortable="true">Address</th>
                                         <th data-field="dateEntered" data-sortable="true">Date Entered</th>
                                         <th data-field="owner" data-sortable="true">Owner</th>
@@ -140,7 +140,7 @@
                                             <td class="id">{{id}}</td>
                                             <td class="siteName">{{siteName}}</td>
                                             <td class="siteAddress">{{siteAddress}}</td>
-                                            <td class="dateEntered">{{dateEntered}}</td>
+                                            <td class="dateEntered">{{entered}}</td>
                                             <td class="owner">{{owner}}</td>
                                             <td class="numUnits">{{number numUnits}}</td>
                                             <td class="salePrice">{{number salePrice}}</td>
@@ -185,36 +185,38 @@
                                     <div class="col-lg-6">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
+                                            <!-- hidden tenant id if available -->
+                                            <input type="hidden" name="id" id="id" />
                                                 <div class="form-group">
-                                                    <label for="name_id">Site</label>
-                                                    <input type="text" class="form-control" id="name_id" name="siteName" placeholder="Site Name">
+                                                    <label for="siteName">Site</label>
+                                                    <input type="text" class="form-control" id="siteName" name="siteName" placeholder="Site Name">
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- Street 1 -->
-                                                    <label for="street1_id" class="control-label">Street Address 1</label>
-                                                    <input type="text" class="form-control" id="street1_id" name="siteStreet1" placeholder="Street address, P.O. box, c/o">
+                                                    <label for="siteStreet1" class="control-label">Street Address 1</label>
+                                                    <input type="text" class="form-control" id="siteStreet1" name="siteStreet1" placeholder="Street address, P.O. box, c/o">
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- Street 2 -->
-                                                    <label for="street2_id" class="control-label">Street Address 2 (optional) </label>
-                                                    <input type="text" class="form-control" id="street2_id" name="siteStreet2" placeholder="Apartment, suite, unit, building, floor, etc.">
+                                                    <label for="siteStreet2" class="control-label">Street Address 2 (optional) </label>
+                                                    <input type="text" class="form-control" id="siteStreet2" name="siteStreet2" placeholder="Apartment, suite, unit, building, floor, etc.">
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- City-->
-                                                    <label for="city_id" class="control-label">City</label>
-                                                    <input type="text" class="form-control" id="city_id" name="siteCity" placeholder="Cleveland">
+                                                    <label for="siteCity" class="control-label">City</label>
+                                                    <input type="text" class="form-control" id="siteCity" name="siteCity" placeholder="Cleveland">
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- State Button -->
-                                                    <label for="state_id" class="control-label">State</label>
-                                                    <select class="form-control" id="state_id" name="siteState">
+                                                    <label for="siteState" class="control-label">State</label>
+                                                    <select class="form-control" id="siteState" name="siteState">
                                                         <option value="OH">Ohio</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <!-- Zip Code-->
-                                                    <label for="zip_id" class="control-label">Zip Code</label>
-                                                    <input type="text" class="form-control" id="zip_id" name="siteZip" placeholder="#####">
+                                                    <label for="siteZip" class="control-label">Zip Code</label>
+                                                    <input type="text" class="form-control" id="siteZip" name="siteZip" placeholder="#####">
                                                 </div>
                                         </div>
                                     </div>
@@ -225,24 +227,24 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                                 <div class="form-group">
-                                                    <label for="dateEntered_id">Date Entered</label>
-                                                    <input type="text" class="form-control datepicker" id="dateEntered_id" name="dateEntered" placeholder="Date Entered" />
+                                                    <label for="entered">Date Entered</label>
+                                                    <input type="text" class="form-control datepicker" id="entered" name="entered" placeholder="Date Entered" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="owner_id">Owner</label>
-                                                    <input type="text" class="form-control" id="owner_id" name="owner">
+                                                    <label for="owner">Owner</label>
+                                                    <input type="text" class="form-control" id="owner" name="owner">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="numUnits_id"># of Units</label>
-                                                    <input type="number" class="form-control" id="numUnits_id" name="numUnits">
+                                                    <label for="numUnits"># of Units</label>
+                                                    <input type="number" class="form-control" id="numUnits" name="numUnits">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="salePrice_id">Sale Price</label>
-                                                    <input type="number" class="form-control" id="salePrice_id" name="salePrice">
+                                                    <label for="salePrice">Sale Price</label>
+                                                    <input type="number" class="form-control" id="salePrice" name="salePrice">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="notes_id">Notes</label>
-                                                    <textarea class = "form-control" rows = "5" id="notes_id" name="notes"></textarea>
+                                                    <label for="notes">Notes</label>
+                                                    <textarea class = "form-control" rows = "5" id="notes" name="notes"></textarea>
                                                 </div>
                                         </div>
                                     </div>

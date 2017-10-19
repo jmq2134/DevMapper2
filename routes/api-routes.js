@@ -94,6 +94,17 @@ module.exports = function(app) {
         });
     })
 
+    /// ================= SHOW fipDev BY id =================== ///
+    app.get("/api/fipDev/:id", function(req, res) {
+        db.fipDev.findAll({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbfipDev) {
+            res.json(dbfipDev);
+        });
+    })
+
     /// =============== SHOW ALL leaseComps ================= ///
     app.get("/api/leaseComps", function(req, res) {
         db.leaseComps.findAll({}).then(function(dbleaseComps) {
@@ -112,10 +123,7 @@ module.exports = function(app) {
         console.log(req.body);
         console.log("------------------------");
 
-        var dateString=req.body.dateEntered;
-        dateString=new Date(dateString).toUTCString();
-        dateString=dateString.split(' ').slice(0, 4).join(' ')
-        console.log(dateString);
+        if (req.body.id == "") {
 
         db.fipDev.create({
             siteName: req.body.siteName,
@@ -124,8 +132,8 @@ module.exports = function(app) {
             siteCity: req.body.siteCity,
             siteState: req.body. siteState,
             siteZip: req.body.siteZip,
-            siteAddress: req.body.siteStreet1 + ", " + req.body.siteStreet2 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
-            dateEntered: dateString,        
+            siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+            entered: entered,        
             owner: req.body.owner,
             numUnits: req.body.numUnits,
             salePrice: req.body.salePrice,
@@ -140,6 +148,40 @@ module.exports = function(app) {
             // REPORT ERRORS
                 res.send(error);
             });
+        }
+
+        else {
+
+            console.log(req.body.id);
+            console.log("edit tenant");
+
+            db.fipDev.update({
+            siteName: req.body.siteName,
+            siteStreet1: req.body.siteStreet1,
+            siteStreet2: req.body.siteStreet2,
+            siteCity: req.body.siteCity,
+            siteState: req.body. siteState,
+            siteZip: req.body.siteZip,
+            siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+            entered: req.body.entered,        
+            owner: req.body.owner,
+            numUnits: req.body.numUnits,
+            salePrice: req.body.salePrice,
+            notes: req.body.notes
+        }, {
+                where: { id: req.body.id }
+
+            }).then(function(data) {
+
+            // REDIRECT TO CENTER PAGE
+            res.redirect("/fipDev");
+
+            }).catch(function(error) {
+
+            // REPORT ERRORS
+                res.send(error);
+            });
+        }
     });
 
     /// ================ ADD CLE DEV SITE ==================== ///
@@ -151,7 +193,9 @@ module.exports = function(app) {
         console.log(req.body);
         console.log("------------------------");
 
-        db.cleDev.create({
+        if (req.body.id = "") {
+
+            db.cleDev.create({
             siteName: req.body.siteName,
             siteStreet1: req.body.siteStreet1,
             siteStreet2: req.body.siteStreet2,
@@ -174,6 +218,39 @@ module.exports = function(app) {
             // REPORT ERRORS
                 res.send(error);
             });
+        }
+
+        else {
+
+        db.cleDev.update({
+            siteName: req.body.siteName,
+            siteStreet1: req.body.siteStreet1,
+            siteStreet2: req.body.siteStreet2,
+            siteCity: req.body.siteCity,
+            siteState: req.body. siteState,
+            siteZip: req.body.siteZip,
+            siteAddress: req.body.siteAddress,
+            dateEntered: req.body.dateEntered,        
+            owner: req.body.owner,
+            numUnits: req.body.numUnits,
+            salePrice: req.body.salePrice,
+            notes: req.body.notes
+        }, {
+                where: { id: req.body.id }
+
+            }).then(function(data) {
+
+            // REDIRECT TO CENTER PAGE
+            res.redirect("/cleDev");
+
+            }).catch(function(error) {
+
+            // REPORT ERRORS
+                res.send(error);
+            });
+
+        }
+
     });
 
     app.post("/api/newComp", function(req, res) {
