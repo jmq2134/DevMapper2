@@ -13,6 +13,19 @@
     }   
 }
 
+.notes-Td-css {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notes-Td-css:hover {
+    overflow: visible;
+    white-space: pre-wrap;
+}
+
+
 .all-icons [class^="pe-"]{
     font-size: 40px;
 }
