@@ -1,14 +1,16 @@
 $(document).ready(function() {
 
+    console.log("addcle loading");
+
     // Getting references to the add new tenant inputs
+    var id = $("[name=id]");
     var siteName = $("[name=siteName]");
     var siteStreet1 = $("[name=siteStreet1]");
     var siteStreet2 = $("[name=siteStreet2]");
     var siteCity = $("[name=siteCity]");
     var siteState = $("[name=siteState]");
     var siteZip = $("[name=siteZip]");
-    var siteAddress = siteStreet1 + ", " + siteStreet2 + ", " + siteCity + ", " + siteState + " " + siteZip;
-    var dateEntered = $("[name=dateEntered]");
+    var entered = $("[name=entered]");
     var owner = $("[name=owner]");
     var numUnits = $("[name=numUnits]");
     var salePrice = $("[name=salePrice]");
@@ -40,6 +42,9 @@ $(document).ready(function() {
 
         // Calling the newCleSite function and passing in the values in the new tenant input
         newCleSite({
+            id: id
+                .val()
+                .trim(),            
             siteName: siteName
                 .val()
                 .trim(),
@@ -58,10 +63,7 @@ $(document).ready(function() {
             siteZip: siteZip
                 .val()
                 .trim(),
-            siteAddress: siteAddress
-                .val()
-                .trim(),
-            dateEntered: dateEntered
+            entered: entered
                 .val()
                 .trim(),
             owner: owner

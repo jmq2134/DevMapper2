@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
     siteState: DataTypes.STRING, 
     siteZip: DataTypes.STRING,
     siteAddress: DataTypes.STRING,
-    dateEntered: DataTypes.DATE,
+    entered: DataTypes.STRING,
     owner: DataTypes.STRING,
     numUnits: DataTypes.STRING,
     salePrice: DataTypes.STRING,

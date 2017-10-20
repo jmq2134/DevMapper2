@@ -13,6 +13,11 @@ module.exports = function(app) {
         res.redirect('/signin');
     });
 
+    /// ============= REDIRECT TO LOGIN ============== ///
+    app.get('/dashboard', function(req, res) {
+        res.redirect('/fipdev');
+    });
+
     /// ================ RENDER SIGNIN =============== ///
     app.get('/signin', function(req, res) {
         res.render('signin', req);
@@ -127,7 +132,6 @@ module.exports = function(app) {
     })
 
 
-
     // ------------------------------------------- POST ROUTES -------------------------------------------------- //
 
     /// =============== ADD FIP DEV SITE ==================== ///
@@ -202,24 +206,24 @@ module.exports = function(app) {
 
     /// ================ ADD CLE DEV SITE ==================== ///
 
-    app.post("/api/newCleSite", function(req, res) {
+    app.post("/api/newClesite", function(req, res) {
 
         // LOG INFO FROM REQ.BODY FROM MODAL FORM
         console.log("------------------------");
         console.log(req.body);
         console.log("------------------------");
 
-        if (req.body.id = "") {
+        if (req.body.id == "") {
 
-            db.cleDev.create({
+        db.cleDev.create({
             siteName: req.body.siteName,
             siteStreet1: req.body.siteStreet1,
             siteStreet2: req.body.siteStreet2,
             siteCity: req.body.siteCity,
             siteState: req.body. siteState,
             siteZip: req.body.siteZip,
-            siteAddress: req.body.siteAddress,
-            dateEntered: req.body.dateEntered,        
+            siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+            entered: req.body.entered,        
             owner: req.body.owner,
             numUnits: req.body.numUnits,
             salePrice: req.body.salePrice,
@@ -238,15 +242,18 @@ module.exports = function(app) {
 
         else {
 
-        db.cleDev.update({
+            console.log(req.body.id);
+            console.log("edit tenant");
+
+            db.cleDev.update({
             siteName: req.body.siteName,
             siteStreet1: req.body.siteStreet1,
             siteStreet2: req.body.siteStreet2,
             siteCity: req.body.siteCity,
             siteState: req.body. siteState,
             siteZip: req.body.siteZip,
-            siteAddress: req.body.siteAddress,
-            dateEntered: req.body.dateEntered,        
+            siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+            entered: req.body.entered,        
             owner: req.body.owner,
             numUnits: req.body.numUnits,
             salePrice: req.body.salePrice,
@@ -264,9 +271,7 @@ module.exports = function(app) {
             // REPORT ERRORS
                 res.send(error);
             });
-
         }
-
     });
 
     app.post("/api/newComp", function(req, res) {
