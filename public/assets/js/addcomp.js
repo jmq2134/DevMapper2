@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    console.log("addcomp loading");
+
     // Getting references to the add new tenant inputs
     var siteName = $("[name=siteName]");
     var siteStreet1 = $("[name=siteStreet1]");
@@ -7,9 +9,8 @@ $(document).ready(function() {
     var siteCity = $("[name=siteCity]");
     var siteState = $("[name=siteState]");
     var siteZip = $("[name=siteZip]");
-    var siteAddress = siteStreet1 + ", " + siteStreet2 + ", " + siteCity + ", " + siteState + " " + siteZip;
-    var dateEntered = $("[name=dateEntered]");
-    var dateSold = $("[name=dateSold]");
+    var entered = $("[name=entered]");
+    var sold = $("[name=sold]");
     var buildingSF = $("[name=buildingSF]");
     var totalAcreage = $("[name=totalAcreage]");
     var salePrice = $("[name=salePrice]");
@@ -63,13 +64,10 @@ $(document).ready(function() {
             siteZip: siteZip
                 .val()
                 .trim(),
-            siteAddress: siteAddress
+            entered: entered
                 .val()
                 .trim(),
-            dateEntered: dateEntered
-                .val()
-                .trim(),
-            dateSold: dateSold
+            sold: sold
                 .val()
                 .trim(),
             buildingSF: buildingSF

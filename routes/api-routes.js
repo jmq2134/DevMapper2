@@ -145,60 +145,58 @@ module.exports = function(app) {
 
         if (req.body.id == "") {
 
-        db.fipDev.create({
-            siteName: req.body.siteName,
-            siteStreet1: req.body.siteStreet1,
-            siteStreet2: req.body.siteStreet2,
-            siteCity: req.body.siteCity,
-            siteState: req.body. siteState,
-            siteZip: req.body.siteZip,
-            siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
-            entered: req.body.entered,        
-            owner: req.body.owner,
-            numUnits: req.body.numUnits,
-            salePrice: req.body.salePrice,
-            notes: req.body.notes
-        }).then(function(data) {
+            db.fipDev.create({
+                siteName: req.body.siteName,
+                siteStreet1: req.body.siteStreet1,
+                siteStreet2: req.body.siteStreet2,
+                siteCity: req.body.siteCity,
+                siteState: req.body.siteState,
+                siteZip: req.body.siteZip,
+                siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+                entered: req.body.entered,
+                owner: req.body.owner,
+                numUnits: req.body.numUnits,
+                salePrice: req.body.salePrice,
+                notes: req.body.notes
+            }).then(function(data) {
 
-            // REDIRECT TO CENTER PAGE
-            res.redirect("/fipDev");
+                // REDIRECT TO CENTER PAGE
+                res.redirect("/fipDev");
 
             }).catch(function(error) {
 
-            // REPORT ERRORS
+                // REPORT ERRORS
                 res.send(error);
             });
-        }
-
-        else {
+        } else {
 
             console.log(req.body.id);
             console.log("edit tenant");
 
             db.fipDev.update({
-            siteName: req.body.siteName,
-            siteStreet1: req.body.siteStreet1,
-            siteStreet2: req.body.siteStreet2,
-            siteCity: req.body.siteCity,
-            siteState: req.body. siteState,
-            siteZip: req.body.siteZip,
-            siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
-            entered: req.body.entered,        
-            owner: req.body.owner,
-            numUnits: req.body.numUnits,
-            salePrice: req.body.salePrice,
-            notes: req.body.notes
-        }, {
+                siteName: req.body.siteName,
+                siteStreet1: req.body.siteStreet1,
+                siteStreet2: req.body.siteStreet2,
+                siteCity: req.body.siteCity,
+                siteState: req.body.siteState,
+                siteZip: req.body.siteZip,
+                siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+                entered: req.body.entered,
+                owner: req.body.owner,
+                numUnits: req.body.numUnits,
+                salePrice: req.body.salePrice,
+                notes: req.body.notes
+            }, {
                 where: { id: req.body.id }
 
             }).then(function(data) {
 
-            // REDIRECT TO CENTER PAGE
-            res.redirect("/fipDev");
+                // REDIRECT TO CENTER PAGE
+                res.redirect("/fipDev");
 
             }).catch(function(error) {
 
-            // REPORT ERRORS
+                // REPORT ERRORS
                 res.send(error);
             });
         }
@@ -215,60 +213,58 @@ module.exports = function(app) {
 
         if (req.body.id == "") {
 
-        db.cleDev.create({
-            siteName: req.body.siteName,
-            siteStreet1: req.body.siteStreet1,
-            siteStreet2: req.body.siteStreet2,
-            siteCity: req.body.siteCity,
-            siteState: req.body. siteState,
-            siteZip: req.body.siteZip,
-            siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
-            entered: req.body.entered,        
-            owner: req.body.owner,
-            numUnits: req.body.numUnits,
-            salePrice: req.body.salePrice,
-            notes: req.body.notes
-        }).then(function(data) {
+            db.cleDev.create({
+                siteName: req.body.siteName,
+                siteStreet1: req.body.siteStreet1,
+                siteStreet2: req.body.siteStreet2,
+                siteCity: req.body.siteCity,
+                siteState: req.body.siteState,
+                siteZip: req.body.siteZip,
+                siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+                entered: req.body.entered,
+                owner: req.body.owner,
+                numUnits: req.body.numUnits,
+                salePrice: req.body.salePrice,
+                notes: req.body.notes
+            }).then(function(data) {
 
-            // REDIRECT TO CENTER PAGE
-            res.redirect("/cleDev");
+                // REDIRECT TO CENTER PAGE
+                res.redirect("/cleDev");
 
             }).catch(function(error) {
 
-            // REPORT ERRORS
+                // REPORT ERRORS
                 res.send(error);
             });
-        }
-
-        else {
+        } else {
 
             console.log(req.body.id);
             console.log("edit tenant");
 
             db.cleDev.update({
-            siteName: req.body.siteName,
-            siteStreet1: req.body.siteStreet1,
-            siteStreet2: req.body.siteStreet2,
-            siteCity: req.body.siteCity,
-            siteState: req.body. siteState,
-            siteZip: req.body.siteZip,
-            siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
-            entered: req.body.entered,        
-            owner: req.body.owner,
-            numUnits: req.body.numUnits,
-            salePrice: req.body.salePrice,
-            notes: req.body.notes
-        }, {
+                siteName: req.body.siteName,
+                siteStreet1: req.body.siteStreet1,
+                siteStreet2: req.body.siteStreet2,
+                siteCity: req.body.siteCity,
+                siteState: req.body.siteState,
+                siteZip: req.body.siteZip,
+                siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+                entered: req.body.entered,
+                owner: req.body.owner,
+                numUnits: req.body.numUnits,
+                salePrice: req.body.salePrice,
+                notes: req.body.notes
+            }, {
                 where: { id: req.body.id }
 
             }).then(function(data) {
 
-            // REDIRECT TO CENTER PAGE
-            res.redirect("/cleDev");
+                // REDIRECT TO CENTER PAGE
+                res.redirect("/cleDev");
 
             }).catch(function(error) {
 
-            // REPORT ERRORS
+                // REPORT ERRORS
                 res.send(error);
             });
         }
@@ -281,143 +277,77 @@ module.exports = function(app) {
         console.log(req.body);
         console.log("------------------------");
 
-        db.leaseComps.create({
-            siteName: req.body.siteName,
-            siteStreet1: req.body.siteStreet1,
-            siteStreet2: req.body.siteStreet2,
-            siteCity: req.body.siteCity,
-            siteState: req.body. siteState,
-            siteZip: req.body.siteZip,
-            siteAddress: req.body.siteAddress,
-            dateEntered: req.body.dateEntered, 
-            dateSold: req.body.dateSold,
-            buildingSF: req.body.buildingSF,
-            totalAcreage: req.body.totalAcreage,  
-            salePrice: req.body.salePrice,
-            dateEntered: req.body.dateEntered,  
-            numUnits: req.body.numUnits,
-            oneBedRent: req.body.oneBedRent,
-            twoBedRent: req.body.twoBedRent,
-            threeBedRent: req.body.threeBedRent,
-            notes: req.body.notes
-        }).then(function(data) {
+        if (req.body.id == "") {
 
-            // REDIRECT TO CENTER PAGE
-            res.redirect("/leaseComps");
+            db.leaseComps.create({
+                siteName: req.body.siteName,
+                siteStreet1: req.body.siteStreet1,
+                siteStreet2: req.body.siteStreet2,
+                siteCity: req.body.siteCity,
+                siteState: req.body.siteState,
+                siteZip: req.body.siteZip,
+                siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+                entered: req.body.entered,
+                sold: req.body.sold,
+                buildingSF: req.body.buildingSF,
+                totalAcreage: req.body.totalAcreage,
+                salePrice: req.body.salePrice,
+                costPerAcre:  (parseFloat(req.body.salePrice))/(parseFloat(req.body.totalAcreage)),
+                numUnits: req.body.numUnits,
+                costPerUnit: (parseFloat(req.body.salePrice))/(parseFloat(req.body.numUnits)),
+                oneBedRent: req.body.oneBedRent,
+                twoBedRent: req.body.twoBedRent,
+                threeBedRent: req.body.threeBedRent,
+                notes: req.body.notes
+            }).then(function(data) {
+
+                // REDIRECT TO CENTER PAGE
+                res.redirect("/leaseComps");
 
             }).catch(function(error) {
 
-            // REPORT ERRORS
+                // REPORT ERRORS
                 res.send(error);
             });
-    });
-
-
-    /// =============== ADD OR EDIT TENANTS ================== ///
-
-    app.post("/api/:id/newTenant", function(req, res) {
-
-        // LOG INFO FROM REQ.BODY FROM MODAL FORM
-        console.log("------------------------");
-        console.log(req.body);
-        console.log(req.body.id);
-        console.log("------------------------");
-
-        /// IF NO ID IS SENT THROUGH MODAL FORM, IT'S A NEW TENANT
-        if (req.body.id == "") {
-
-            //// ADD NEW TO TENANTS TABLE -- HANDLE VACANT TENANT OR REGULAR TENANT
-
-            /// VACANT TENANT
-
-            if (req.body.basePSF == "") {
-
-                db.Tenants.create({
-                    CenterId: req.params.id,
-                    tenantName: req.body.tenantName,
-                    tenantSF: req.body.tenantSF
-                }).then(function(data) {
-
-                    // REDIRECT TO CENTER PAGE
-                    res.redirect("/center/" + req.params.id);
-
-                }).catch(function(error) {
-
-                    // REPORT ERRORS
-                    res.send(error);
-                });
-
-
-                /// REGULAR TENANTS
-
-            } else {
-
-                db.Tenants.create({
-
-                    CenterId: req.params.id,
-                    tenantName: req.body.tenantName,
-                    tenantSF: req.body.tenantSF,
-                    leaseStart: req.body.leaseStart,
-                    leaseEnd: req.body.leaseEnd,
-                    basePSF: req.body.basePSF,
-                    camPSF: req.body.camPSF,
-                    totalPSF: parseFloat(req.body.basePSF) + parseFloat(req.body.camPSF),
-                    annualRent: (parseFloat(req.body.basePSF) + parseFloat(req.body.camPSF)) * parseFloat(req.body.tenantSF),
-                    salesPSF: req.body.salesPSF,
-                    annualSales: parseFloat(req.body.salesPSF) * parseFloat(req.body.tenantSF),
-                    occupancy: (parseFloat(req.body.basePSF) + parseFloat(req.body.camPSF)) / parseFloat(req.body.salesPSF),
-                    noticeDate: req.body.noticeDate,
-                    noticeRent: req.body.noticeRent
-
-                }).then(function(data) {
-
-                    // REDIRECT TO CENTER PAGE
-                    res.redirect("/center/" + req.params.id);
-
-                }).catch(function(error) {
-
-                    // REPORT ERRORS
-                    res.send(error);
-                });
-            }
-
         } else {
 
-            /// EDIT EXISTING TENANT
-
+            console.log(req.body.id);
             console.log("edit tenant");
 
-            db.Tenants.update({
-                CenterId: req.params.id,
-                tenantName: req.body.tenantName,
-                tenantSF: req.body.tenantSF,
-                leaseStart: req.body.leaseStart,
-                leaseEnd: req.body.leaseEnd,
-                basePSF: req.body.basePSF,
-                camPSF: req.body.camPSF,
-                totalPSF: parseFloat(req.body.basePSF) + parseFloat(req.body.camPSF),
-                annualRent: (parseFloat(req.body.basePSF) + parseFloat(req.body.camPSF)) * parseFloat(req.body.tenantSF),
-                salesPSF: req.body.salesPSF,
-                annualSales: parseFloat(req.body.salesPSF) * parseFloat(req.body.tenantSF),
-                occupancy: (parseFloat(req.body.basePSF) + parseFloat(req.body.camPSF)) / parseFloat(req.body.salesPSF),
-                noticeDate: req.body.noticeDate,
-                noticeRent: req.body.noticeRent
+            db.leaseComps.update({
+                siteName: req.body.siteName,
+                siteStreet1: req.body.siteStreet1,
+                siteStreet2: req.body.siteStreet2,
+                siteCity: req.body.siteCity,
+                siteState: req.body.siteState,
+                siteZip: req.body.siteZip,
+                siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+                entered: req.body.entered,
+                sold: req.body.sold,
+                buildingSF: req.body.buildingSF,
+                totalAcreage: req.body.totalAcreage,
+                salePrice: req.body.salePrice,
+                costPerAcre:  (parseFloat(req.body.salePrice))/(parseFloat(req.body.totalAcreage)),
+                numUnits: req.body.numUnits,
+                costPerUnit: (parseFloat(req.body.salePrice))/(parseFloat(req.body.numUnits)),
+                oneBedRent: req.body.oneBedRent,
+                twoBedRent: req.body.twoBedRent,
+                threeBedRent: req.body.threeBedRent,
+                notes: req.body.notes
             }, {
                 where: { id: req.body.id }
 
-                // REDIRECT TO SHOPPING CENTER PAGE
             }).then(function(data) {
 
-                res.redirect("/center/" + req.params.id);
+                // REDIRECT TO CENTER PAGE
+                res.redirect("/leaseComps");
 
-                // CATCH ERRORS
             }).catch(function(error) {
 
+                // REPORT ERRORS
                 res.send(error);
             });
-
         }
-
     });
 
 

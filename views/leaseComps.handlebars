@@ -125,39 +125,39 @@
                                 <table id="bootstrap-table" class="table table-striped">
                                     <thead>
                                         <th data-field="id" class="text-center">ID</th>
-                                        <th data-field="siteName" class="text-center" data-sortable="true">Site</th>
-                                        <th data-field="siteAddress" class="text-center" data-sortable="true">Address</th>
-                                        <th data-field="dateEntered" class="text-center" data-sortable="true">Date Entered</th>
-                                        <th data-field="dateTransfered" class="text-center" data-sortable="true">Date Transferred</th>
-                                        <th data-field="salePrice" class="text-center" data-sortable="true">Sale Price</th>
-                                        <th data-field="buildingSF" class="text-center" data-sortable="true">Building SF</th>
-                                        <th data-field="totalAcreage" class="text-center" data-sortable="true">Acreage</th>
-                                        <th data-field="costPerAcre" class="text-center" data-sortable="true">Cost Per Acre</th>
-                                        <th data-field="numUnits" class="text-center" data-sortable="true"># of Units</th>
-                                        <th data-field="costPerUnit" class="text-center" data-sortable="true">Cost Per Unit</th>
-                                        <th data-field="oneBedRent" class="text-center" data-sortable="true">1-Bed Avg. Rent</th>
-                                        <th data-field="twoBedRent" class="text-center" data-sortable="true">2-Bed Avg. Rent</th>
-                                        <th data-field="threeBedRent" class="text-center" data-sortable="true">3-Bed Avg. Rent</th>
-                                        <th data-field="notes" class="text-center" data-sortable="true">Notes</th>
+                                        <th data-field="siteName" class="text-left" data-sortable="true">Site</th>
+                                        <th data-field="siteAddress" data-sortable="true">Address</th>
+                                        <th data-field="entered" data-sortable="true">Date Entered</th>
+                                        <th data-field="sold" data-sortable="true">Date Transferred</th>
+                                        <th data-field="salePrice" data-sortable="true">Sale Price</th>
+                                        <th data-field="buildingSF" data-sortable="true">Building SF</th>
+                                        <th data-field="totalAcreage" data-sortable="true">Acreage</th>
+                                        <th data-field="costPerAcre" data-sortable="true">Cost Per Acre</th>
+                                        <th data-field="numUnits" data-sortable="true"># of Units</th>
+                                        <th data-field="costPerUnit" data-sortable="true">Cost Per Unit</th>
+                                        <th data-field="oneBedRent" data-sortable="true">1-Bed Avg. Rent</th>
+                                        <th data-field="twoBedRent" data-sortable="true">2-Bed Avg. Rent</th>
+                                        <th data-field="threeBedRent" data-sortable="true">3-Bed Avg. Rent</th>
+                                        <th data-field="notes" data-sortable="true">Notes</th>                                       
+                                        <th data-field="actions" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">Actions</th>
                                     </thead>
                                     <tbody>
-                                        {{#each fipDev}}
+                                        {{#each leaseComps}}
                                         <tr>
                                             <td class="id">{{id}}</td>
                                             <td class="siteName">{{siteName}}</td>
                                             <td class="siteAddress">{{siteAddress}}</td>
-                                            <td class="dateEntered">{{dateEntered}}</td>
-                                            <td class="dateTransfered">{{dateTransfered}}</td>
-                                            <td class="dateSold">{{dateSold}}</td>
-                                            <td class="buildingSF">{{buildingSF}}</td>
-                                            <td class="totalAcreage">{{totalAcreage}}</td>
-                                            <td class="costPerAcre">{{costPerAcre}}</td>
-                                            <td class="salePrice">{{salePrice}}</td>
-                                            <td class="numUnits">{{numUnits}}</td>
-                                            <td class="costPerUnit">{{costPerUnit}}</td>
-                                            <td class="oneBedRent">{{oneBedRent}}</td>
-                                            <td class="twoBedRent">{{twoBedRent}}</td>
-                                            <td class="threeBedRent">{{threeBedRent}}</td>
+                                            <td class="entered">{{entered}}</td>
+                                            <td class="sold">{{sold}}</td>
+                                            <td class="salePrice">{{ number salePrice}}</td>
+                                            <td class="buildingSF">{{ number buildingSF}}</td>
+                                            <td class="totalAcreage">{{ number totalAcreage}}</td>
+                                            <td class="costPerAcre">{{ number costPerAcre}}</td>
+                                            <td class="numUnits">{{ number numUnits}}</td>
+                                            <td class="costPerUnit">{{ number costPerUnit}}</td>
+                                            <td class="oneBedRent">{{ number oneBedRent}}</td>
+                                            <td class="twoBedRent">{{ number twoBedRent}}</td>
+                                            <td class="threeBedRent">{{ number threeBedRent}}</td>
                                             <td class="notes notes-Td-css">{{notes}}</td>
                                         </tr>
                                         {{/each}}
@@ -199,38 +199,39 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
                                                     <form class="create-update-form" action="/api/newComp" method="POST">
+                                                        <input type="hidden" name="id" id="id" />
+                                                        <input type="hidden" name="dbComps" id="dbComps" />
                                                         <div class="form-group">
-                                                            <label for="name_id">Site</label>
-                                                            <input type="text" class="form-control" id="name_id" name="siteName" placeholder="Person name, compnay name">
+                                                            <label for="siteName">Site</label>
+                                                            <input type="text" class="form-control" id="siteName" name="siteName" placeholder="Person name, compnay name">
                                                         </div>
                                                         <div class="form-group">
                                                             <!-- Street 1 -->
-                                                            <label for="street1_id" class="control-label">Street Address 1</label>
-                                                            <input type="text" class="form-control" id="street1_id" name="siteStreet1" placeholder="Street address, P.O. box, c/o">
+                                                            <label for="siteStreet1" class="control-label">Street Address 1</label>
+                                                            <input type="text" class="form-control" id="siteStreet1" name="siteStreet1" placeholder="Street address, P.O. box, c/o">
                                                         </div>
                                                         <div class="form-group">
                                                             <!-- Street 2 -->
-                                                            <label for="street2_id" class="control-label">Street Address 2 (optional) </label>
-                                                            <input type="text" class="form-control" id="street2_id" name="siteStreet2" placeholder="Apartment, suite, unit, building, floor, etc.">
+                                                            <label for="siteStreet2" class="control-label">Street Address 2 (optional) </label>
+                                                            <input type="text" class="form-control" id="siteStreet2" name="siteStreet2" placeholder="Apartment, suite, unit, building, floor, etc.">
                                                         </div>
                                                         <div class="form-group">
                                                             <!-- City-->
-                                                            <label for="city_id" class="control-label">City</label>
-                                                            <input type="text" class="form-control" id="city_id" name="siteCity" placeholder="Cleveland">
+                                                            <label for="siteCity" class="control-label">City</label>
+                                                            <input type="text" class="form-control" id="siteCity" name="siteCity" placeholder="Cleveland">
                                                         </div>
                                                         <div class="form-group">
                                                             <!-- State Button -->
-                                                            <label for="state_id" class="control-label">State</label>
-                                                            <select class="form-control" id="state_id" name="siteState">
+                                                            <label for="siteState" class="control-label">State</label>
+                                                            <select class="form-control" id="siteState" name="siteState">
                                                                 <option value="OH">Ohio</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
                                                             <!-- Zip Code-->
-                                                            <label for="zip_id" class="control-label">Zip Code</label>
-                                                            <input type="text" class="form-control" id="zip_id" name="siteZip" placeholder="#####">
+                                                            <label for="siteZip" class="control-label">Zip Code</label>
+                                                            <input type="text" class="form-control" id="siteZip" name="siteZip" placeholder="#####">
                                                         </div>
-                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -238,77 +239,75 @@
                                         <div class="col-lg-6">
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
-                                                    <form class='modal-form'>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="dateEntered_id">Date Entered</label>
-                                                                    <input type="date" class="form-control" id="dateEntered_id" name="dateEntered">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="dateSold_id">Date Sold</label>
-                                                                    <input type="date" class="form-control" id="dateSold_id" name="dateSold">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="buildingSF_id">Building SF</label>
-                                                                    <input type="number" class="form-control" id="buildingSF_id" placeholder="#,###" name="buildingSF">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="acreage_id">Total Acreage</label>
-                                                                    <input type="number" class="form-control" id="acreage_id" placeholder="###.##" name="totalAcreage">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="salePrice_id">Sale Price</label>
-                                                                    <input type="number" class="form-control" id="salePrice_id" placeholder="#,###,###" name="salePrice">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="numUnits_id"># of Units</label>
-                                                                    <input type="number" class="form-control" id="numUnits_id" placeholder="###" name="numUnits">
-                                                                </div>
-                                                            </div>
-                                                        </div <div class="row">
-                                                        <div class="col-md-4">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="oneBed_id">1-Bed Rent</label>
-                                                                <input type="number" class="form-control" id="oneBed_id" placeholder="#,###" name="oneBedRent">
+                                                                <label for="entered">Date Entered</label>
+                                                                <input type="date" class="form-control" id="entered" name="entered">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="twoBed_id">2-Bed Rent</label>
-                                                                <input type="number" class="form-control" id="twoBed_id" placeholder="#,###" name="twoBedRent">
+                                                                <label for="sold">Date Sold</label>
+                                                                <input type="date" class="form-control" id="sold" name="sold">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="threeBed_id">3-Bed Rent</label>
-                                                                <input type="number" class="form-control" id="threeBed_id" placeholder="#,###" name="threeBedRent">
+                                                                <label for="buildingSF">Building SF</label>
+                                                                <input type="number" class="form-control" id="buildingSF" placeholder="#,###" name="buildingSF">
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="totalAcreage">Total Acreage</label>
+                                                                <input type="number" class="form-control" id="totalAcreage" placeholder="###.##" name="totalAcreage">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="salePrice">Sale Price</label>
+                                                                <input type="number" class="form-control" id="salePrice" placeholder="#,###,###" name="salePrice">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="numUnits"># of Units</label>
+                                                                <input type="number" class="form-control" id="numUnits" placeholder="###" name="numUnits">
+                                                            </div>
+                                                        </div>
+                                                    </div <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="oneBedRent">1-Bed Rent</label>
+                                                            <input type="number" class="form-control" id="oneBedRent" placeholder="#,###" name="oneBedRent">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="twoBedRent">2-Bed Rent</label>
+                                                            <input type="number" class="form-control" id="twoBedRent" placeholder="#,###" name="twoBedRent">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="threeBedRent">3-Bed Rent</label>
+                                                            <input type="number" class="form-control" id="threeBedRent" placeholder="#,###" name="threeBedRent">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label for="notes_id">Notes</label>
-                                                            <textarea class="form-control" rows="5" id="notes_id"></textarea>
+                                                            <label for="notes">Notes</label>
+                                                            <textarea class="form-control" rows="5" id="notes" name="notes"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -320,6 +319,7 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button class="btn btn-success btn-fill btn-wd " method="GET" action="/" type="submit " id="form--event-add">Save changes</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

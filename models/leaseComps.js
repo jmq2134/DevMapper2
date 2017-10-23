@@ -12,16 +12,18 @@ module.exports = function(sequelize, DataTypes) {
     siteState: DataTypes.STRING, 
     siteZip: DataTypes.STRING,
     siteAddress: DataTypes.STRING,
-    dateEntered: DataTypes.DATE,
-    dateSold: DataTypes.DATE,
+    entered: DataTypes.STRING,
+    sold: DataTypes.STRING,
     buildingSF: DataTypes.STRING,
-    totalAcreage: DataTypes.STRING,
     salePrice: DataTypes.STRING,
+    totalAcreage: DataTypes.STRING,
+    costPerAcre: DataTypes.STRING,
     numUnits: DataTypes.STRING,
+    costPerUnit: DataTypes.STRING,
     oneBedRent: DataTypes.STRING,
     twoBedRent: DataTypes.STRING,
     threeBedRent: DataTypes.STRING,
-    note: DataTypes.STRING
+    notes: DataTypes.STRING
 
   });
 
