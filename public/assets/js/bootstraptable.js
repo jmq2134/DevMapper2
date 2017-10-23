@@ -40,8 +40,6 @@ $().ready(function() {
 
             if (url == "http://localhost:8080/fipDev") {
 
-                console.log("working");
-
                 // FIND TENANT INFO FROM ROW
                 $.ajax({
                         method: "GET",
@@ -69,9 +67,7 @@ $().ready(function() {
 
                     })
 
-            }
-
-            else if (url == "http://localhost:8080/cleDev" ) {
+            } else if (url == "http://localhost:8080/cleDev") {
 
                 // FIND TENANT INFO FROM ROW
                 $.ajax({
@@ -100,6 +96,39 @@ $().ready(function() {
 
                     })
 
+            } else if (url == "http://localhost:8080/leaseComps") {
+
+                // FIND TENANT INFO FROM ROW
+                $.ajax({
+                        method: "GET",
+                        url: "/api/leaseComps/" 
+                    })
+                    // Fill modal with tenant info
+                    .done(function(data) {
+                        console.log(data);
+                        data = data[0];
+                        $('#modal--create').modal({
+                            show: 'true'
+                        });
+                        $("#id").val(data.id);
+                        $("#siteName").val(data.siteName);
+                        $("#siteStreet1").val(data.siteStreet1);
+                        $("#siteStreet2").val(data.siteStreet2);
+                        $("#siteCity").val(data.siteCity);
+                        $("#siteState").val(data.siteState);
+                        $("#siteZip").val(data.siteZip);
+                        $("#entered").val(data.entered);
+                        $("#sold").val(data.sold);
+                        $("#owner").val(data.owner);
+                        $("#buildingSF").val(data.buildingSF);
+                        $("#totalAcreage").val(data.totalAcreage);
+                        $("#salePrice").val(data.salePrice);
+                        $("#numUnits").val(data.numUnits);
+                        $("#oneBedRent").val(data.oneBedRent);
+                        $("#twoBedRent").val(data.twoBedRent);
+                        $("#threeBedRent").val(data.threeBedRent);
+                        $("#notes").val(data.notes);
+                    })
             }
 
         },
