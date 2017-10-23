@@ -33,33 +33,74 @@ $().ready(function() {
 
             // SAVE TENANT ID FROM
             var thisId = row.id;
+            console.log(thisId);
 
-            // FIND TENANT INFO FROM ROW
-            $.ajax({
-                    method: "GET",
-                    url: "/api/fipDev/" + thisId
-                })
-                // Fill modal with tenant info
-                .done(function(data) {
-                    console.log(data);
-                    data = data[0];
-                    $('#modal--create').modal({
-                        show: 'true'
-                    });
-                    $("#id").val(data.id);
-                    $("#siteName").val(data.siteName);
-                    $("#siteStreet1").val(data.siteStreet1);
-                    $("#siteStreet2").val(data.siteStreet2);
-                    $("#siteCity").val(data.siteCity);
-                    $("#siteState").val(data.siteState);
-                    $("#siteZip").val(data.siteZip);
-                    $("#entered").val(data.entered);
-                    $("#owner").val(data.owner);
-                    $("#numUnits").val(data.numUnits);
-                    $("#salePrice").val(data.salePrice);
-                    $("#notes").val(data.notes);
+            var url = window.location.href;
+            console.log(url);
 
-                })
+            if (url == "http://localhost:8080/fipDev") {
+
+                console.log("working");
+
+                // FIND TENANT INFO FROM ROW
+                $.ajax({
+                        method: "GET",
+                        url: "/api/fipDev/" + thisId
+                    })
+                    // Fill modal with tenant info
+                    .done(function(data) {
+                        console.log(data);
+                        data = data[0];
+                        $('#modal--create').modal({
+                            show: 'true'
+                        });
+                        $("#id").val(data.id);
+                        $("#siteName").val(data.siteName);
+                        $("#siteStreet1").val(data.siteStreet1);
+                        $("#siteStreet2").val(data.siteStreet2);
+                        $("#siteCity").val(data.siteCity);
+                        $("#siteState").val(data.siteState);
+                        $("#siteZip").val(data.siteZip);
+                        $("#entered").val(data.entered);
+                        $("#owner").val(data.owner);
+                        $("#numUnits").val(data.numUnits);
+                        $("#salePrice").val(data.salePrice);
+                        $("#notes").val(data.notes);
+
+                    })
+
+            }
+
+            else if (url == "http://localhost:8080/cleDev" ) {
+
+                // FIND TENANT INFO FROM ROW
+                $.ajax({
+                        method: "GET",
+                        url: "/api/cleDev/" + thisId
+                    })
+                    // Fill modal with tenant info
+                    .done(function(data) {
+                        console.log(data);
+                        data = data[0];
+                        $('#modal--create').modal({
+                            show: 'true'
+                        });
+                        $("#id").val(data.id);
+                        $("#siteName").val(data.siteName);
+                        $("#siteStreet1").val(data.siteStreet1);
+                        $("#siteStreet2").val(data.siteStreet2);
+                        $("#siteCity").val(data.siteCity);
+                        $("#siteState").val(data.siteState);
+                        $("#siteZip").val(data.siteZip);
+                        $("#entered").val(data.entered);
+                        $("#owner").val(data.owner);
+                        $("#numUnits").val(data.numUnits);
+                        $("#salePrice").val(data.salePrice);
+                        $("#notes").val(data.notes);
+
+                    })
+
+            }
 
         },
         'click .remove': function(e, value, row, index) {

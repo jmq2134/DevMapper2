@@ -141,8 +141,8 @@
                                             <td class="siteAddress">{{siteAddress}}</td>
                                             <td class="entered">{{entered}}</td>
                                             <td class="owner">{{owner}}</td>
-                                            <td class="numUnits">{{numUnits}}</td>
-                                            <td class="salePrice">{{salePrice}}</td>
+                                            <td class="numUnits">{{ number numUnits}}</td>
+                                            <td class="salePrice">{{ number salePrice}}</td>
                                             <td class="notes notes-Td-css">{{notes}}</td>
                                         </tr>
                                         {{/each}}
@@ -193,7 +193,7 @@
                                                         <div class="form-group">
                                                             <!-- Street 1 -->
                                                             <label for="siteStreet" class="control-label">Street Address 1</label>
-                                                            <input type="text" class="form-control" id="siteStreet" name="siteStreet1" placeholder="Street address, P.O. box, c/o">
+                                                            <input type="text" class="form-control" id="siteStreet1" name="siteStreet1" placeholder="Street address, P.O. box, c/o">
                                                         </div>
                                                         <div class="form-group">
                                                             <!-- Street 2 -->
@@ -226,7 +226,7 @@
                                                 <div class="panel-body">
                                                     <div class="form-group">
                                                         <label for="entered">Date Entered</label>
-                                                        <input type="date" class="form-control" id="entered" name="entered">
+                                                        <input type="text" class="form-control datepicker" id="entered" name="entered" placeholder="Date Entered" />
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="owner">Owner</label>
