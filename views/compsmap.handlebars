@@ -1,0 +1,116 @@
+<body>
+    <!-- SIDE NAV -->
+    <div class="sidebar" data-color="green" data-image="/assets/img/full-screen-image-3.jpg">
+        <!--
+            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+            Tip 2: you can also add an image using data-image tag
+        -->
+        <div class="logo">
+            <a href="" class="logo-text">
+                FIP
+            </a>
+        </div>
+        <div class="logo logo-mini">
+            <a href="" class="logo-text">
+                FIP
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            <!-- NAVBAR -->
+            <ul class="nav">
+                <li class="active">
+                    <a href="/dashboard">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <!-- DATABASES -->
+                <li>
+                    <a data-toggle="collapse" href="#componentsExamples">
+                            <i class="pe-7s-plugin"></i>
+                                <p>Databases
+                                    <b class="caret"></b>
+                                </p>
+                         </a>
+                    <div class="collapse" id="componentsExamples">
+                        <ul class="nav">
+                            <li>
+                                <a href="/fipDev">FIP Development</a>
+                            </li>
+                            <li>
+                                <a href="/cleDev">Cleveland Development</a>
+                            </li>
+                            <li>
+                                <a href="/leaseComps">Lease Comparables</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- MAPS -->
+                <li>
+                    <a data-toggle="collapse" href="#componentsExamples2">
+                            <i class="pe-7s-map-marker"></i>
+                                <p>Maps
+                                    <b class="caret"></b>
+                                </p>
+                         </a>
+                    <div class="collapse" id="componentsExamples2">
+                        <ul class="nav">
+                            <li>
+                                <a href="/fipmap">FIP Map</a>
+                            </li>
+                            <li>
+                                <a href="/clemap">Cleveland Map</a>
+                            </li>
+                            <li>
+                                <a href="/compsmap">Lease Comp Map</a>
+                            </li>
+                            <li>
+                                <a href="/allmap">All Sites</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- TOP HEADER -->
+    <div class="main-panel">
+        <nav class="navbar navbar-default" id="navbar-jump">
+            <div class="container-fluid">
+                <div class="navbar-minimize">
+                    <button id="minimizeSidebar" class="btn btn-warning btn-fill btn-round btn-icon">
+                        <i class="fa fa-ellipsis-v visible-on-sidebar-regular"></i>
+                        <i class="fa fa-navicon visible-on-sidebar-mini"></i>
+                    </button>
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Lease Comparables Map</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#bootstrap-table" class="btn btn-wd btn-info">
+                                        View Tenants
+                                </a>
+                        </li>
+                        <li>
+                            <a href="/logout" class="btn btn-wd btn-danger">
+                                        Log out
+                                    </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div style="height: 100vh">
+        <div id="map" class="full-screen-map"></div>
+    </div>
+</body>

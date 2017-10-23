@@ -31,27 +31,75 @@ demo = {
         };
         map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-        $.ajax({
-                method: "GET",
-                url: "/api/centers"
-            })
-            // Fill modal with tenant info
-            .done(function(data) {
+        var url = window.location.href;
+        console.log(url);
 
-                /// PUSH CENTER DATA INTO LOCATION ARRAY
-                for (i = 0; i < data.length; i++) {
-                    var location = data[i].centerStreet + ', ' + data[i].centerCity + ', ' + data[i].centerState + ' ' + data[i].centerZip;
-                    var title = data[i].centerName;
-                    locations.push(location);
-                    titles.push(title);
-                    geocode(i, data[i].centerStreet, data[i].centerCity + ', ' + data[i].centerState + ' ' + data[i].centerZip);
-                }
-            });
+        if (url == "http://localhost:8080/fipmap") {
 
+            $.ajax({
+                    method: "GET",
+                    url: "/api/fipDev/"
+                })
+                .done(function(data) {
+
+                    /// PUSH CENTER DATA INTO LOCATION ARRAY
+                    for (i = 0; i < data.length; i++) {
+                        console.log(data[i]);
+                        var location = data[i].siteStreet1 + ', ' + data[i].siteCity + ', ' + data[i].siteCity + ' ' + data[i].siteZip;
+                        var title = data[i].siteName;
+                        locations.push(location);
+                        console.log(locations);
+                        titles.push(title);
+                        geocode(i, data[i].siteStreet1, data[i].siteCity + ', ' + data[i].siteCity + ' ' + data[i].siteZip);
+                    }
+                });
+
+        } else if (url == "http://localhost:8080/clemap") {
+
+            $.ajax({
+                    method: "GET",
+                    url: "/api/cleDev/"
+                })
+                .done(function(data) {
+
+                    /// PUSH CENTER DATA INTO LOCATION ARRAY
+                    for (i = 0; i < data.length; i++) {
+                        console.log(data[i]);
+                        var location = data[i].siteStreet1 + ', ' + data[i].siteCity + ', ' + data[i].siteCity + ' ' + data[i].siteZip;
+                        var title = data[i].siteName;
+                        locations.push(location);
+                        console.log(locations);
+                        titles.push(title);
+                        geocode(i, data[i].siteStreet1, data[i].siteCity + ', ' + data[i].siteCity + ' ' + data[i].siteZip);
+                    }
+                });
+
+        } else if (url == "http://localhost:8080/compsmap") {
+
+            $.ajax({
+                    method: "GET",
+                    url: "/api/leaseComps/"
+                })
+                .done(function(data) {
+
+                    /// PUSH CENTER DATA INTO LOCATION ARRAY
+                    for (i = 0; i < data.length; i++) {
+                        console.log(data[i]);
+                        var location = data[i].siteStreet1 + ', ' + data[i].siteCity + ', ' + data[i].siteCity + ' ' + data[i].siteZip;
+                        var title = data[i].siteName;
+                        locations.push(location);
+                        console.log(locations);
+                        titles.push(title);
+                        geocode(i, data[i].siteStreet1, data[i].siteCity + ', ' + data[i].siteCity + ' ' + data[i].siteZip);
+                    }
+                });
+
+        }
 
         function geocode(x, add1, add2) {
             $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address=' + locations[x] + '&sensor=false', null, function(data) {
-                var p = data.results[0].geometry.location
+                var p = data.results[0].geometry.location;
+                console.log(p);
                 var latlng = new google.maps.LatLng(p.lat, p.lng);
                 var infowindow = new google.maps.InfoWindow({
                     content: "<h4 style='margin:10px 0px; font-weight:500;'>" + titles[x] + "</h4><p>" + add1 + "<br>" + add2 + "</p>"
