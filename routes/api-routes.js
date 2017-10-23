@@ -292,9 +292,9 @@ module.exports = function(app) {
                 buildingSF: req.body.buildingSF,
                 totalAcreage: req.body.totalAcreage,
                 salePrice: req.body.salePrice,
-                costPerAcre:  (parseFloat(req.body.salePrice))/(parseFloat(req.body.totalAcreage)),
+                costPerAcre: (parseFloat(req.body.salePrice)) / (parseFloat(req.body.totalAcreage)),
                 numUnits: req.body.numUnits,
-                costPerUnit: (parseFloat(req.body.salePrice))/(parseFloat(req.body.numUnits)),
+                costPerUnit: (parseFloat(req.body.salePrice)) / (parseFloat(req.body.numUnits)),
                 oneBedRent: req.body.oneBedRent,
                 twoBedRent: req.body.twoBedRent,
                 threeBedRent: req.body.threeBedRent,
@@ -327,9 +327,9 @@ module.exports = function(app) {
                 buildingSF: req.body.buildingSF,
                 totalAcreage: req.body.totalAcreage,
                 salePrice: req.body.salePrice,
-                costPerAcre:  (parseFloat(req.body.salePrice))/(parseFloat(req.body.totalAcreage)),
+                costPerAcre: (parseFloat(req.body.salePrice)) / (parseFloat(req.body.totalAcreage)),
                 numUnits: req.body.numUnits,
-                costPerUnit: (parseFloat(req.body.salePrice))/(parseFloat(req.body.numUnits)),
+                costPerUnit: (parseFloat(req.body.salePrice)) / (parseFloat(req.body.numUnits)),
                 oneBedRent: req.body.oneBedRent,
                 twoBedRent: req.body.twoBedRent,
                 threeBedRent: req.body.threeBedRent,
@@ -353,32 +353,24 @@ module.exports = function(app) {
 
     /// ==================== DELETE TENANT ====================== ///
 
-    app.delete("/api/remove/:thisId", function(req, res) {
+    app.delete("/api/remove/fip/:thisId", function(req, res) {
 
-        console.log("\n\n\n>>>>");
+        console.log("---------------");
         console.log("remove tenant");
         console.log(req.params.thisId);
         console.log(req.body);
-        console.log("\n\n\n>>>>");
+        console.log("---------------");
 
-        var centerId = "";
-
-        db.Tenants.findOne({
+        db.fipDev.findOne({
             where: {
                 id: req.params.thisId
             }
-        }).then(function(data) {
-            console.log(data);
-            centerId = data.CenterId;
-            console.log(centerId);
-
         }).then(function() {
 
-            db.Tenants.destroy({
+            db.fipDev.destroy({
                 where: {
                     id: req.params.thisId
                 }
-
                 // REFRESH PAGE
             }).then(function() {
                 location.reload();
@@ -388,9 +380,72 @@ module.exports = function(app) {
 
                 res.send(error);
             });
-
         })
-
     });
+
+    app.delete("/api/remove/cle/:thisId", function(req, res) {
+
+        console.log("---------------");
+        console.log("remove tenant");
+        console.log(req.params.thisId);
+        console.log(req.body);
+        console.log("---------------");
+
+        db.cleDev.findOne({
+            where: {
+                id: req.params.thisId
+            }
+        }).then(function() {
+
+            db.cleDev.destroy({
+                where: {
+                    id: req.params.thisId
+                }
+                // REFRESH PAGE
+            }).then(function() {
+                location.reload();
+
+                // CATCH ERRORS
+            }).catch(function(error) {
+
+                res.send(error);
+            });
+        })
+    });
+
+    app.delete("/api/remove/comps/:thisId", function(req, res) {
+
+        console.log("---------------");
+        console.log("remove tenant");
+        console.log(req.params.thisId);
+        console.log(req.body);
+        console.log("---------------");
+
+        db.leaseComps.findOne({
+            where: {
+                id: req.params.thisId
+            }
+        }).then(function() {
+
+            db.leaseComps.destroy({
+                where: {
+                    id: req.params.thisId
+                }
+                // REFRESH PAGE
+            }).then(function() {
+                location.reload();
+
+                // CATCH ERRORS
+            }).catch(function(error) {
+
+                res.send(error);
+            });
+        })
+    });
+
+
+
+
+
 
 }; // close api export

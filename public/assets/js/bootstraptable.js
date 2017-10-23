@@ -101,7 +101,7 @@ $().ready(function() {
                 // FIND TENANT INFO FROM ROW
                 $.ajax({
                         method: "GET",
-                        url: "/api/leaseComps/" 
+                        url: "/api/leaseComps/"
                     })
                     // Fill modal with tenant info
                     .done(function(data) {
@@ -140,16 +140,42 @@ $().ready(function() {
             // Save the id from the p tag
             var thisId = row.id;
 
+            var url = window.location.href;
+            console.log(url);
 
             // FIND TENANT INFO FROM ROW
-            $.ajax({
-                    method: "DELETE",
-                    url: "/api/remove/" + thisId
-                })
-                // Fill modal with tenant info
-                .done(function(data) {
-                    location.reload();
-                })
+
+            if (url == "http://localhost:8080/fipDev") {
+                $.ajax({
+                        method: "DELETE",
+                        url: "/api/remove/fip/" + thisId
+                    })
+                    // Fill modal with tenant info
+                    .done(function(data) {
+                        location.reload();
+                    })
+
+            } else if (url == "http://localhost:8080/cleDev") {
+                $.ajax({
+                        method: "DELETE",
+                        url: "/api/remove/cle/" + thisId
+                    })
+                    // Fill modal with tenant info
+                    .done(function(data) {
+                        location.reload();
+                    })
+
+            } else if (url == "http://localhost:8080/leaseComps") {
+                $.ajax({
+                        method: "DELETE",
+                        url: "/api/remove/comps/" + thisId
+                    })
+                    // Fill modal with tenant info
+                    .done(function(data) {
+                        location.reload();
+                    })
+
+            }
         }
     };
 
