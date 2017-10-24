@@ -82,6 +82,15 @@ module.exports = function(app) {
         });
     });
 
+    /// ============== RENDER ALL MAP ================ ///
+    app.get("/allmap", function(req, res) {
+        db.leaseComps.findAll().then(function(data) {
+            var hbsObject = { leaseComps: data };
+            // res.json(hbsObject);
+            res.render('allmap', hbsObject);
+        });
+    });
+
 
     // ------------------------------------------- API GET ROUTES ----------------------------------------------- //
 
