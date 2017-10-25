@@ -18,12 +18,18 @@ demo = {
 
     initFullScreenGoogleMap: function() {
 
+        var url = window.location.href;
+        console.log(url);
+
         var map;
+        var radiusHalfMile;
+        var radiusMile;
+        var radiusMileHalf;
         var elevator;
         var locations = new Array();
         var titles = new Array();
         var mapOptions = {
-            zoom: 11,
+            zoom: 13,
             center: new google.maps.LatLng(41.4993, -81.6944),
             // mapTypeId: 'terrain',
             scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
@@ -31,8 +37,47 @@ demo = {
         };
         map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-        var url = window.location.href;
-        console.log(url);
+        if (url !== "http://localhost:8080/compsmap") {
+
+            // .5 mile radius
+            radiusHalfMile = new google.maps.Circle({
+                strokeColor: '#76D7C4',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#76D7C4',
+                fillOpacity: 0.20,
+                map: map,
+                center: { lat: 41.503575, lng: -81.611931 },
+                radius: 804.672
+            });
+
+            // 1.0 mile radius
+            radiusMile = new google.maps.Circle({
+                strokeColor: '#76D7C4',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#76D7C4',
+                fillOpacity: 0.20,
+                map: map,
+                center: { lat: 41.503575, lng: -81.611931 },
+                radius: 1609.34
+            });
+
+            // 1.0 mile radius
+            radiusMileHalf = new google.maps.Circle({
+                strokeColor: '#76D7C4',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#76D7C4',
+                fillOpacity: 0.20,
+                map: map,
+                center: { lat: 41.503575, lng: -81.611931 },
+                radius: 2414.02
+            });
+
+        }
+
+
 
         if (url == "http://localhost:8080/fipmap") {
 
@@ -95,6 +140,8 @@ demo = {
                 });
 
         }
+
+
 
 
 
