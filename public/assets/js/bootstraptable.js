@@ -9,7 +9,7 @@ function operateFormatter(value, row, index) {
         '<a rel="tooltip" title="Edit" class="btn btn-simple btn-warning btn-icon table-action edit" href="javascript:void(0)">',
         '<i class="fa fa-edit"></i>',
         '</a>',
-        '<a rel="tooltip" title="Remove" class="btn btn-simple btn-danger btn-icon table-action remove" href="javascript:void(0)">',
+        '<a rel="tooltip" title="Remove" class="btn btn-simple btn-danger btn-icon table-action remove"  href="javascript:void(0)">',
         '<i class="fa fa-remove"></i>',
         '</a>'
     ].join('');

@@ -151,7 +151,7 @@ demo = {
                 console.log(p);
                 var latlng = new google.maps.LatLng(p.lat, p.lng);
                 var infowindow = new google.maps.InfoWindow({
-                    content: "<h4 style='margin:10px 0px; font-weight:500;'>" + titles[x] + "</h4><p>" + add1 + "<br>" + add2 + "</p>"
+                    content: "<h4 style='margin:10px 0px; font-weight:500;'>" + titles[x] + "</h4><p>" + add1
                 });
                 var marker = new google.maps.Marker({
                     position: latlng,
