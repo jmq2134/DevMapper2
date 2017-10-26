@@ -292,6 +292,9 @@ module.exports = function(app) {
                 costPerAcre: (parseFloat(req.body.salePrice)) / (parseFloat(req.body.totalAcreage)),
                 numUnits: req.body.numUnits,
                 costPerUnit: (parseFloat(req.body.salePrice)) / (parseFloat(req.body.numUnits)),
+                oneBedSF: req.body.oneBedSF,
+                twoBedSF: req.body.twoBedSF,
+                threeBedSF: req.body.threeBedSF,
                 oneBedRent: req.body.oneBedRent,
                 twoBedRent: req.body.twoBedRent,
                 threeBedRent: req.body.threeBedRent,
@@ -313,12 +316,8 @@ module.exports = function(app) {
 
             db.leaseComps.update({
                 siteName: req.body.siteName,
-                siteStreet1: req.body.siteStreet1,
-                siteStreet2: req.body.siteStreet2,
-                siteCity: req.body.siteCity,
-                siteState: req.body.siteState,
-                siteZip: req.body.siteZip,
-                siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+                address: req.body.address,
+                owner: req.body.owner,
                 entered: req.body.entered,
                 sold: req.body.sold,
                 buildingSF: req.body.buildingSF,
@@ -327,6 +326,9 @@ module.exports = function(app) {
                 costPerAcre: (parseFloat(req.body.salePrice)) / (parseFloat(req.body.totalAcreage)),
                 numUnits: req.body.numUnits,
                 costPerUnit: (parseFloat(req.body.salePrice)) / (parseFloat(req.body.numUnits)),
+                oneBedSF: req.body.oneBedSF,
+                twoBedSF: req.body.twoBedSF,
+                threeBedSF: req.body.threeBedSF,
                 oneBedRent: req.body.oneBedRent,
                 twoBedRent: req.body.twoBedRent,
                 threeBedRent: req.body.threeBedRent,
@@ -439,10 +441,6 @@ module.exports = function(app) {
             });
         })
     });
-
-
-
-
 
 
 }; // close api export

@@ -4,17 +4,17 @@ $(document).ready(function() {
 
     // Getting references to the add new tenant inputs
     var siteName = $("[name=siteName]");
-    var siteStreet1 = $("[name=siteStreet1]");
-    var siteStreet2 = $("[name=siteStreet2]");
-    var siteCity = $("[name=siteCity]");
-    var siteState = $("[name=siteState]");
-    var siteZip = $("[name=siteZip]");
+    var address = $("[name=address]");
+    var owner = $("[name=owner]");
     var entered = $("[name=entered]");
     var sold = $("[name=sold]");
     var buildingSF = $("[name=buildingSF]");
     var totalAcreage = $("[name=totalAcreage]");
     var salePrice = $("[name=salePrice]");
     var numUnits = $("[name=numUnits]");
+    var oneBedSF = $("[name=oneBedSF]");
+    var twoBedSF = $("[name=twoBedSF]");
+    var threeBedSF = $("[name=threeBedSF]");
     var oneBedRent = $("[name=oneBedRent]");
     var twoBedRent = $("[name=twoBedRent]");
     var threeBedRent = $("[name=threeBedRent]");
@@ -38,7 +38,7 @@ $(document).ready(function() {
         // A function for creating a new tenant
         function newComp(compData) {
             console.log(compData);
-            $.post("/api/newComp", compData, function(){
+            $.post("/api/newComp", compData, function() {
                 console.log('request ended')
             })
             console.log("adding new site to leasecomp database");
@@ -49,19 +49,10 @@ $(document).ready(function() {
             siteName: siteName
                 .val()
                 .trim(),
-            siteStreet1: siteStreet1
+            address: address
                 .val()
                 .trim(),
-            siteStreet2: siteStreet2
-                .val()
-                .trim(),
-            siteCity: siteCity
-                .val()
-                .trim(),
-            siteState: siteState
-                .val()
-                .trim(),
-            siteZip: siteZip
+            owner: owner
                 .val()
                 .trim(),
             entered: entered
@@ -83,6 +74,15 @@ $(document).ready(function() {
                 .val()
                 .trim(),
             salePrice: salePrice
+                .val()
+                .trim(),
+            oneBedSF: oneBedSF
+                .val()
+                .trim(),
+            twoBedSF: twoBedSF
+                .val()
+                .trim(),
+            threeBedSF: threeBedSF
                 .val()
                 .trim(),
             oneBedRent: oneBedRent

@@ -108,11 +108,8 @@ $().ready(function() {
                         });
                         $("#id").val(data.id);
                         $("#siteName").val(data.siteName);
-                        $("#siteStreet1").val(data.siteStreet1);
-                        $("#siteStreet2").val(data.siteStreet2);
-                        $("#siteCity").val(data.siteCity);
-                        $("#siteState").val(data.siteState);
-                        $("#siteZip").val(data.siteZip);
+                        $("#autocomplete").val(data.address);
+                        $("#owner").val(data.owner);
                         $("#entered").val(data.entered);
                         $("#sold").val(data.sold);
                         $("#owner").val(data.owner);
@@ -120,6 +117,9 @@ $().ready(function() {
                         $("#totalAcreage").val(data.totalAcreage);
                         $("#salePrice").val(data.salePrice);
                         $("#numUnits").val(data.numUnits);
+                        $("#oneBedSF").val(data.oneBedSF);
+                        $("#twoBedSF").val(data.twoBedSF);
+                        $("#threeBedSF").val(data.threeBedSF);
                         $("#oneBedRent").val(data.oneBedRent);
                         $("#twoBedRent").val(data.twoBedRent);
                         $("#threeBedRent").val(data.threeBedRent);
