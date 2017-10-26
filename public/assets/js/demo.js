@@ -19,7 +19,6 @@ demo = {
     initFullScreenGoogleMap: function() {
 
         var url = window.location.href;
-        console.log(url);
 
         var map;
         var radiusHalfMile;
@@ -77,8 +76,6 @@ demo = {
 
         }
 
-
-
         if (url == "http://localhost:8080/fipmap") {
 
             $.ajax({
@@ -89,11 +86,9 @@ demo = {
 
                     /// PUSH CENTER DATA INTO LOCATION ARRAY
                     for (i = 0; i < data.length; i++) {
-                        console.log(data[i]);
                         var location = data[i].address;
                         var title = data[i].siteName;
                         locations.push(location);
-                        console.log(locations);
                         titles.push(title);
                         geocode(i, data[i].address);
                     }
@@ -109,11 +104,9 @@ demo = {
 
                     /// PUSH CENTER DATA INTO LOCATION ARRAY
                     for (i = 0; i < data.length; i++) {
-                        console.log(data[i]);
                         var location = data[i].address;
                         var title = data[i].siteName;
                         locations.push(location);
-                        console.log(locations);
                         titles.push(title);
                         geocode(i, data[i].address);
                     }
@@ -129,21 +122,15 @@ demo = {
 
                     /// PUSH CENTER DATA INTO LOCATION ARRAY
                     for (i = 0; i < data.length; i++) {
-                        console.log(data[i]);
                         var location = data[i].address;
                         var title = data[i].siteName;
                         locations.push(location);
-                        console.log(locations);
                         titles.push(title);
                         geocode(i, data[i].address);
                     }
                 });
 
         }
-
-
-
-
 
         function geocode(x, add1, add2) {
             $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address=' + locations[x] + '&sensor=false', null, function(data) {
