@@ -130,12 +130,12 @@ demo = {
                     /// PUSH CENTER DATA INTO LOCATION ARRAY
                     for (i = 0; i < data.length; i++) {
                         console.log(data[i]);
-                        var location = data[i].siteStreet1 + ', ' + data[i].siteCity + ', ' + data[i].siteCity + ' ' + data[i].siteZip;
+                        var location = data[i].address;
                         var title = data[i].siteName;
                         locations.push(location);
                         console.log(locations);
                         titles.push(title);
-                        geocode(i, data[i].siteStreet1, data[i].siteCity + ', ' + data[i].siteCity + ' ' + data[i].siteZip);
+                        geocode(i, data[i].address);
                     }
                 });
 
