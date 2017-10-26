@@ -156,15 +156,12 @@ module.exports = function(app) {
 
             db.fipDev.create({
                 siteName: req.body.siteName,
-                siteStreet1: req.body.siteStreet1,
-                siteStreet2: req.body.siteStreet2,
-                siteCity: req.body.siteCity,
-                siteState: req.body.siteState,
-                siteZip: req.body.siteZip,
-                siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+                address: req.body.address,
                 entered: req.body.entered,
                 owner: req.body.owner,
                 numUnits: req.body.numUnits,
+                acres: req.body.acres,
+                squareFootage: req.body.squareFootage,
                 salePrice: req.body.salePrice,
                 notes: req.body.notes
             }).then(function(data) {
@@ -184,15 +181,12 @@ module.exports = function(app) {
 
             db.fipDev.update({
                 siteName: req.body.siteName,
-                siteStreet1: req.body.siteStreet1,
-                siteStreet2: req.body.siteStreet2,
-                siteCity: req.body.siteCity,
-                siteState: req.body.siteState,
-                siteZip: req.body.siteZip,
-                siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+                address: req.body.address,
                 entered: req.body.entered,
                 owner: req.body.owner,
                 numUnits: req.body.numUnits,
+                acres: req.body.acres,
+                squareFootage: req.body.squareFootage,
                 salePrice: req.body.salePrice,
                 notes: req.body.notes
             }, {
@@ -224,15 +218,12 @@ module.exports = function(app) {
 
             db.cleDev.create({
                 siteName: req.body.siteName,
-                siteStreet1: req.body.siteStreet1,
-                siteStreet2: req.body.siteStreet2,
-                siteCity: req.body.siteCity,
-                siteState: req.body.siteState,
-                siteZip: req.body.siteZip,
-                siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+                address: req.body.address,
                 entered: req.body.entered,
                 owner: req.body.owner,
                 numUnits: req.body.numUnits,
+                acres: req.body.acres,
+                squareFootage: req.body.squareFootage,
                 salePrice: req.body.salePrice,
                 notes: req.body.notes
             }).then(function(data) {
@@ -252,15 +243,12 @@ module.exports = function(app) {
 
             db.cleDev.update({
                 siteName: req.body.siteName,
-                siteStreet1: req.body.siteStreet1,
-                siteStreet2: req.body.siteStreet2,
-                siteCity: req.body.siteCity,
-                siteState: req.body.siteState,
-                siteZip: req.body.siteZip,
-                siteAddress: req.body.siteStreet1 + ", " + req.body.siteCity + ", " + req.body.siteState + ", " + req.body.siteZip,
+                address: req.body.address,
                 entered: req.body.entered,
                 owner: req.body.owner,
                 numUnits: req.body.numUnits,
+                acres: req.body.acres,
+                squareFootage: req.body.squareFootage,
                 salePrice: req.body.salePrice,
                 notes: req.body.notes
             }, {

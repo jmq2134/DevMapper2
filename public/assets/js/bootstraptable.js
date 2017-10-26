@@ -54,14 +54,12 @@ $().ready(function() {
                         });
                         $("#id").val(data.id);
                         $("#siteName").val(data.siteName);
-                        $("#siteStreet1").val(data.siteStreet1);
-                        $("#siteStreet2").val(data.siteStreet2);
-                        $("#siteCity").val(data.siteCity);
-                        $("#siteState").val(data.siteState);
-                        $("#siteZip").val(data.siteZip);
+                        $("#autocomplete").val(data.address);
                         $("#entered").val(data.entered);
                         $("#owner").val(data.owner);
                         $("#numUnits").val(data.numUnits);
+                        $("#acres").val(data.acres);
+                        $("#squareFootage").val(data.squareFootage);
                         $("#salePrice").val(data.salePrice);
                         $("#notes").val(data.notes);
 
@@ -83,14 +81,12 @@ $().ready(function() {
                         });
                         $("#id").val(data.id);
                         $("#siteName").val(data.siteName);
-                        $("#siteStreet1").val(data.siteStreet1);
-                        $("#siteStreet2").val(data.siteStreet2);
-                        $("#siteCity").val(data.siteCity);
-                        $("#siteState").val(data.siteState);
-                        $("#siteZip").val(data.siteZip);
+                        $("#autocomplete").val(data.address);
                         $("#entered").val(data.entered);
                         $("#owner").val(data.owner);
                         $("#numUnits").val(data.numUnits);
+                        $("#acres").val(data.acres);
+                        $("#squareFootage").val(data.squareFootage);
                         $("#salePrice").val(data.salePrice);
                         $("#notes").val(data.notes);
 

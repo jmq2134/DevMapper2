@@ -5,13 +5,11 @@ $(document).ready(function() {
     // Getting references to the add new tenant inputs
     var id = $("[name=id]");
     var siteName = $("[name=siteName]");
-    var siteStreet1 = $("[name=siteStreet1]");
-    var siteStreet2 = $("[name=siteStreet2]");
-    var siteCity = $("[name=siteCity]");
-    var siteState = $("[name=siteState]");
-    var siteZip = $("[name=siteZip]");
+    var address = $("[name=address]");
     var entered = $("[name=entered]");
     var owner = $("[name=owner]");
+    var acres = $("[name=acres]");
+    var squareFootage = $("[name=squareFootage]");
     var numUnits = $("[name=numUnits]");
     var salePrice = $("[name=salePrice]");
     var notes = $("[name=notes]");
@@ -34,7 +32,7 @@ $(document).ready(function() {
         // A function for creating a new tenant
         function newFipSite(fipData) {
             console.log(fipData);
-            $.post("/api/newfipsite", fipData, function(){
+            $.post("/api/newfipsite", fipData, function() {
                 console.log('request ended')
             })
             console.log("adding new site to fipDev database");
@@ -48,19 +46,7 @@ $(document).ready(function() {
             siteName: siteName
                 .val()
                 .trim(),
-            siteStreet1: siteStreet1
-                .val()
-                .trim(),
-            siteStreet2: siteStreet2
-                .val()
-                .trim(),
-            siteCity: siteCity
-                .val()
-                .trim(),
-            siteState: siteState
-                .val()
-                .trim(),
-            siteZip: siteZip
+            address: address
                 .val()
                 .trim(),
             entered: entered
@@ -70,6 +56,12 @@ $(document).ready(function() {
                 .val()
                 .trim(),
             numUnits: numUnits
+                .val()
+                .trim(),
+            acres: acres
+                .val()
+                .trim(),
+            squareFootage: squareFootage
                 .val()
                 .trim(),
             salePrice: salePrice

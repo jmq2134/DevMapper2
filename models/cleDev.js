@@ -5,18 +5,15 @@ module.exports = function(sequelize, DataTypes) {
   
   var cleDev = sequelize.define("cleDev", {
 
-    siteName: DataTypes.STRING,
-    siteStreet1: DataTypes.STRING,
-    siteStreet2: DataTypes.STRING,
-    siteCity: DataTypes.STRING,
-    siteState: DataTypes.STRING, 
-    siteZip: DataTypes.STRING,
-    siteAddress: DataTypes.STRING,
-    entered: DataTypes.STRING,
-    owner: DataTypes.STRING,
-    numUnits: DataTypes.STRING,
-    salePrice: DataTypes.STRING,
-    notes: DataTypes.STRING
+        siteName: DataTypes.STRING,
+        address: DataTypes.STRING,
+        entered: DataTypes.STRING,
+        owner: DataTypes.STRING,
+        numUnits: DataTypes.STRING,
+        acres: DataTypes.STRING,
+        squareFootage: DataTypes.STRING,
+        salePrice: DataTypes.STRING,
+        notes: DataTypes.STRING
 
   });
 

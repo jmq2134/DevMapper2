@@ -1,8 +1,6 @@
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
 
-// 'https://jsfiddle.net/upsidown/q8XS6/'
-
 $("#autocomplete").on('focus', function () {
     geolocate();
 });
@@ -11,9 +9,10 @@ var placeSearch, autocomplete;
 var componentForm = {
     street_number: 'short_name',
     route: 'long_name',
-    siteCity: 'long_name',
-    siteState: 'short_name',
-    siteZip: 'short_name'
+    locality: 'long_name',
+    administrative_area_level_1: 'short_name',
+    country: 'long_name',
+    postal_code: 'short_name'
 };
 
 function initialize() {
@@ -35,6 +34,8 @@ function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
 
+    document.getElementById("latitude").value = place.geometry.location.lat();
+    document.getElementById("longitude").value = place.geometry.location.lng();
 
     for (var component in componentForm) {
         document.getElementById(component).value = '';
@@ -64,8 +65,8 @@ function geolocate() {
 
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
-            // document.getElementById("latitude").value = latitude;
-            // document.getElementById("longitude").value = longitude;
+            document.getElementById("latitude").value = latitude;
+            document.getElementById("longitude").value = longitude;
 
             autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
         });
@@ -75,3 +76,4 @@ function geolocate() {
 
 initialize();
 // [END region_geolocation]
+
