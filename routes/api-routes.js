@@ -15,7 +15,7 @@ module.exports = function(app) {
 
     /// ============= REDIRECT TO LOGIN ============== ///
     app.get('/dashboard', function(req, res) {
-        res.redirect('/fipdev');
+        res.redirect('/fipDev');
     });
 
     /// ================ RENDER SIGNIN =============== ///
