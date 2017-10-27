@@ -36,7 +36,7 @@ demo = {
         };
         map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-        if (url !== "http://localhost:8080/compsmap") {
+        if (url !== "https://fipmap.herokuapp.com/compsmap") {
 
             // .5 mile radius
             radiusHalfMile = new google.maps.Circle({
@@ -76,7 +76,7 @@ demo = {
 
         }
 
-        if (url == "http://localhost:8080/fipmap") {
+        if (url == "https://fipmap.herokuapp.com/fipmap") {
 
             $.ajax({
                     method: "GET",
@@ -94,7 +94,7 @@ demo = {
                     }
                 });
 
-        } else if (url == "http://localhost:8080/clemap") {
+        } else if (url == "https://fipmap.herokuapp.com/clemap") {
 
             $.ajax({
                     method: "GET",
@@ -112,7 +112,7 @@ demo = {
                     }
                 });
 
-        } else if (url == "http://localhost:8080/compsmap") {
+        } else if (url == "https://fipmap.herokuapp.com/compsmap") {
 
             $.ajax({
                     method: "GET",

@@ -38,7 +38,7 @@ $().ready(function() {
             var url = window.location.href;
             console.log(url);
 
-            if (url == "http://localhost:8080/fipDev") {
+            if (url == "https://fipmap.herokuapp.com/fipDev") {
 
                 // FIND TENANT INFO FROM ROW
                 $.ajax({
@@ -65,7 +65,7 @@ $().ready(function() {
 
                     })
 
-            } else if (url == "http://localhost:8080/cleDev") {
+            } else if (url == "https://fipmap.herokuapp.com/cleDev") {
 
                 // FIND TENANT INFO FROM ROW
                 $.ajax({
@@ -92,7 +92,7 @@ $().ready(function() {
 
                     })
 
-            } else if (url == "http://localhost:8080/leaseComps") {
+            } else if (url == "https://fipmap.herokuapp.com/leaseComps") {
 
                 // FIND TENANT INFO FROM ROW
                 $.ajax({
@@ -141,7 +141,7 @@ $().ready(function() {
 
             // FIND TENANT INFO FROM ROW
 
-            if (url == "http://localhost:8080/fipDev") {
+            if (url == "https://fipmap.herokuapp.com/fipDev") {
                 $.ajax({
                         method: "DELETE",
                         url: "/api/remove/fip/" + thisId
@@ -151,7 +151,7 @@ $().ready(function() {
                         location.reload();
                     })
 
-            } else if (url == "http://localhost:8080/cleDev") {
+            } else if (url == "https://fipmap.herokuapp.com/cleDev") {
                 $.ajax({
                         method: "DELETE",
                         url: "/api/remove/cle/" + thisId
@@ -161,7 +161,7 @@ $().ready(function() {
                         location.reload();
                     })
 
-            } else if (url == "http://localhost:8080/leaseComps") {
+            } else if (url == "https://fipmap.herokuapp.com/leaseComps") {
                 $.ajax({
                         method: "DELETE",
                         url: "/api/remove/comps/" + thisId
